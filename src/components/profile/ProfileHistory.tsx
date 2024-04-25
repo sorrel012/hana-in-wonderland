@@ -5,7 +5,7 @@ import Seaweeds from '../../components/profile/Seaweeds.tsx';
 import Bubbles from '../../components/profile/Bubbles.tsx';
 import { useQuery } from '@tanstack/react-query';
 import { getProfileCareer } from '../../util/api.ts';
-import { ICareer } from '../../components/admin/profile/AdminProfileCareer.tsx';
+import { ICareer } from '../admin/profile/AdminProfileCareer.tsx';
 import { Period } from './ProfileEdu.tsx';
 import CareerProjectItem from '../../components/profile/CareerProjectItem.tsx';
 

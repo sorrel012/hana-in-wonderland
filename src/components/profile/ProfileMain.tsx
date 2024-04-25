@@ -1,14 +1,14 @@
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import seashell from '../../assets/images/profile/seashell.png';
 import seashell2 from '../../assets/images/profile/seashell2.png';
-import Bubbles from '../../components/profile/Bubbles.tsx';
-import Seaweeds from '../../components/profile/Seaweeds.tsx';
-import { IMainProps } from './Profile.tsx';
+import Bubbles from '../../components/profile/Bubbles';
+import Seaweeds from '../../components/profile/Seaweeds';
+import { IMainProps } from '../../pages/profile';
 import { useQuery } from '@tanstack/react-query';
-import { getProfileCert } from '../../util/api.ts';
-import { ICertification } from '../../components/admin/profile/AdminProfileCert.tsx';
-import { useEffect, useState } from 'react';
-import { AWS_URL } from '../../util/constant.ts';
+import { getProfileCert } from '../../util/api';
+import { ICertification } from '../admin/profile/AdminProfileCert';
+import { AWS_URL } from '../../util/constant';
 
 const Wrapper = styled.main`
   background: ${(props) => props.theme.profile.bgColor};

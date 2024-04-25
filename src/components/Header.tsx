@@ -1,5 +1,6 @@
+import React from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { navigate } from 'gatsby';
 
 const HeaderWrapper = styled.header<IHeaderProps>`
   position: absolute;
@@ -46,8 +47,6 @@ export interface IHeaderProps {
 }
 
 function Header({ category }: IHeaderProps) {
-  const navigate = useNavigate();
-
   const onButtonClick = (category: string) => {
     if (category === 'HOME') {
       navigate('/');

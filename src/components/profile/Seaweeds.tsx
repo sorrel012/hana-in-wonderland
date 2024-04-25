@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import seaweed from '../../assets/images/profile/seaweed1.png';
 import seaweed2 from '../../assets/images/profile/seaweed2.png';

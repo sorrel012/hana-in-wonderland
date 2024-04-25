@@ -1,6 +1,7 @@
+import React from 'react';
 import styled from 'styled-components';
-import { IIntroProps } from './Profile.tsx';
-import { AWS_URL } from '../../util/constant.ts';
+import { AWS_URL } from '../../util/constant';
+import { IIntroProps } from '../../pages/profile';
 
 const Wrapper = styled.main`
   background: ${(props) => props.theme.profile.bgColor};
