@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { AWS_URL } from '../../util/constant';
-import { IIntroProps } from '../../pages/profile';
+import { graphql, useStaticQuery } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const Wrapper = styled.main`
   background: ${(props) => props.theme.profile.bgColor};
@@ -20,12 +20,6 @@ const Introduction = styled.section`
   align-items: center;
   color: ${(props) => props.theme.profile.titleColor};
   z-index: 99;
-`;
-
-const Picture = styled.img`
-  flex: 3;
-  width: 1.5vw;
-  margin-right: 2%;
 `;
 
 const Overview = styled.section`
@@ -94,18 +88,41 @@ const Wave = styled.div`
   }
 `;
 
-function ProfileIntro({ mainPic, title, content }: IIntroProps) {
+function ProfileIntro() {
+  const data = useStaticQuery(graphql`
+    query ProfileIntro {
+      allContentfulProfile {
+        edges {
+          node {
+            mainPic {
+              gatsbyImageData(placeholder: BLURRED)
+            }
+            title
+            content {
+              content
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  const { mainPic, title, content } = data.allContentfulProfile.edges[0].node;
   const titleArr = title.split('.');
 
   return (
     <Wrapper>
       <Introduction>
-        <Picture src={`${AWS_URL}/${mainPic}`} />
+        <GatsbyImage
+          image={mainPic?.gatsbyImageData as any}
+          alt="mainPic"
+          className="main-pic"
+        />
         <Overview>
-          {titleArr.map((text) => (
+          {titleArr.map((text: string) => (
             <Title key={text}>{text}</Title>
           ))}
-          <Content>{content}</Content>
+          <Content>{content?.content}</Content>
         </Overview>
       </Introduction>
       <WaveBox>

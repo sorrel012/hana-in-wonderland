@@ -18,11 +18,6 @@ export interface IMainProps {
 }
 
 function Profile() {
-  const tmp: IIntroProps = {
-    mainPic: 'tmp',
-    title: 'profile',
-    content: 'g',
-  };
   return (
     <FullPage
       licenseKey={process.env.GATSBY_FULLPAGE_LICENSE_KEY}
@@ -40,7 +35,7 @@ function Profile() {
           <>
             <div className="section">
               <Header category="profile" />
-              <ProfileIntro {...tmp} />
+              <ProfileIntro />
             </div>
             {/*<div className="section">*/}
             {/*  <ProfileMain />*/}

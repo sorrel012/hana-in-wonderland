@@ -180,4 +180,10 @@ a {
   background: white !important;
 }
 
+.main-pic {
+  flex: 3;
+  width: 1.5vw;
+  margin-right: 2%;
+}
+
 /*# sourceMappingURL=common.css.map */
