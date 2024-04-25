@@ -4,20 +4,7 @@ import Header from '../components/Header';
 import ProfileIntro from '../components/profile/ProfileIntro';
 import ProfileMain from '../components/profile/ProfileMain';
 import ProfileEdu from '../components/profile/ProfileEdu';
-
-export interface IIntroProps {
-  mainPic: string;
-  title: string;
-  content: string;
-}
-
-export interface IMainProps {
-  subPic: string;
-  name: string;
-  birth: string;
-  email: string;
-  address: string;
-}
+import ProfileHistory from '../components/profile/ProfileHistory';
 
 function Profile() {
   return (
@@ -45,9 +32,9 @@ function Profile() {
             <div className="section">
               <ProfileEdu />
             </div>
-            {/*<div className="section">*/}
-            {/*  <ProfileHistory />*/}
-            {/*</div>*/}
+            <div className="section">
+              <ProfileHistory />
+            </div>
           </>
         );
       }}

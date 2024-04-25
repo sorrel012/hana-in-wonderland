@@ -1,13 +1,12 @@
+import React, { useEffect, useState } from 'react';
 import seashell2 from '../../assets/images/profile/seashell2.png';
-import { Label, Logo, Row, Text } from './ProfileMain.tsx';
+import { Label, Logo, Row, Text } from './ProfileMain';
 import styled from 'styled-components';
-import Seaweeds from '../../components/profile/Seaweeds.tsx';
-import Bubbles from '../../components/profile/Bubbles.tsx';
-import { useQuery } from '@tanstack/react-query';
-import { getProfileCareer } from '../../util/api.ts';
-import { ICareer } from '../admin/profile/AdminProfileCareer.tsx';
-import { Period } from './ProfileEdu.tsx';
-import CareerProjectItem from '../../components/profile/CareerProjectItem.tsx';
+import Seaweeds from '../../components/profile/Seaweeds';
+import Bubbles from '../../components/profile/Bubbles';
+import { graphql, useStaticQuery } from 'gatsby';
+import { Period } from './ProfileEdu';
+import CareerProjectItem from './CareerProjectItem';
 
 const Wrapper = styled.main`
   background: ${(props) => props.theme.profile.bgColor};
@@ -50,11 +49,38 @@ const Project = styled.div`
   padding-left: 3%;
 `;
 
+interface ICareer {
+  company: string;
+  period: string;
+  project: string[];
+  order: number;
+}
+
 function ProfileHistory() {
-  const { data, isLoading } = useQuery({
-    queryKey: ['profileCareer'],
-    queryFn: getProfileCareer,
-  });
+  const [careers, setCareers] = useState<ICareer[]>();
+  const data = useStaticQuery<Queries.ProfileHistoryQuery>(graphql`
+    query ProfileHistory {
+      allContentfulCareer {
+        edges {
+          node {
+            company
+            period
+            project
+          }
+        }
+      }
+    }
+  `);
+
+  useEffect(() => {
+    const newCareers: ICareer[] = data.allContentfulCareer.edges.map(
+      (career: any) => {
+        const { period, company, order, project } = career.node;
+        return { period, company, order, project };
+      },
+    );
+    setCareers(newCareers);
+  }, [data]);
 
   return (
     <Wrapper>
@@ -65,16 +91,15 @@ function ProfileHistory() {
             <Text custom="red">경력</Text>
           </Label>
         </Row>
-        {!isLoading &&
-          data &&
-          data.map((career: ICareer) => (
-            <CareerContent key={career.careerCompany}>
+        {careers &&
+          careers.map((career: ICareer) => (
+            <CareerContent key={career.company}>
               <Company>
-                <Period>◾ {career.careerPeriod}</Period>
-                <CompanyName>{career.careerCompany}</CompanyName>
+                <Period>◾ {career.period}</Period>
+                <CompanyName>{career.company}</CompanyName>
               </Company>
               <Project>
-                <CareerProjectItem {...{ company: career.careerCompany }} />
+                <CareerProjectItem {...{ project: career.project }} />
               </Project>
             </CareerContent>
           ))}
