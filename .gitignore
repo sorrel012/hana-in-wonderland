@@ -15,6 +15,7 @@ node_modules
 *.ipr
 
 ### build ###
+.cache
 build
 .env
 .env.local
