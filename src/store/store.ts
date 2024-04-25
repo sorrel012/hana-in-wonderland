@@ -5,7 +5,7 @@ interface IApiUrlState {
 }
 
 const initialState: IApiUrlState = {
-  url: import.meta.env.VITE_API_URL,
+  url: process.env.GATSBY_API_URL!,
 };
 
 const apiUrlSlice = createSlice({
