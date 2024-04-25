@@ -1,0 +1,207 @@
+@font-face {
+  font-family: 'Fairytale_ddobak';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/naverfont_03@1.0/Fairytale_ddobak.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SUITE-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'LeeSeoyun';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, menu, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+main, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  user-select: none;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section {
+  display: block;
+}
+
+/* HTML5 hidden-attribute fix for newer browsers */
+*[hidden] {
+  display: none;
+}
+
+body {
+  line-height: 1;
+  overflow: hidden;
+}
+
+menu, ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'SUITE-Regular', sans-serif;
+  line-height: 1.2;
+  width: 100vw;
+  height: 100vh;
+  color: #1c1c1c;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+.align{
+  &-center {
+    text-align: center;
+  }
+  &-left {
+    text-align: left;
+  }
+  &-right {
+    text-align: right;
+  }
+}
+
+.font{
+  &-default {
+    font-family: "SUITE-Regular", sans-serif;
+  }
+  &-fairy-tail {
+    font-family: "Fairytale_ddobak", sans-serif;
+  }
+  &-cute {
+    font-family: "LeeSeoyun", sans-serif;
+  }
+  &-bold {
+    font-weight: bold;
+  }
+  &-size {
+    &-2 {
+      font-size: 2vw;
+    }
+    &-2half {
+      font-size: 2.5vw;
+    }
+    &-3 {
+      font-size: 3vw;
+    }
+  }
+}
+
+.transform{
+  &-center-left {
+    transform-origin: center left;
+  }
+  &-center-right {
+    transform-origin: center right;
+  }
+}
+
+.pd{
+  &-lr{
+    &-10 {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+  &-b {
+    &-10 {
+      padding-bottom: 10px;
+    }
+    &-30 {
+      padding-bottom: 30px;
+    }
+    &-50 {
+      padding-bottom: 50px;
+    }
+  }
+}
+
+.mg{
+  &-b {
+    &-5 {
+      margin-bottom: 5px;
+    }
+    &-10 {
+      margin-bottom: 10px;
+    }
+    &-30 {
+      margin-bottom: 30px;
+    }
+    &-50 {
+      margin-bottom: 50px;
+    }
+  }
+  &-t {
+    &-5 {
+      margin-top: 5px;
+    }
+    &-10 {
+      margin-top: 10px;
+    }
+    &-30 {
+      margin-top: 30px;
+    }
+    &-50 {
+      margin-top: 50px;
+    }
+  }
+}
+
+.h {
+  &-10 {
+    height: 10vh;
+  }
+  &-20 {
+    height: 20vh;
+  }
+  &-30 {
+    height: 30vh;
+  }
+}
+
+#fp-nav ul li a span, .fp-slidesNav ul li a span {
+  background: white !important;
+}
