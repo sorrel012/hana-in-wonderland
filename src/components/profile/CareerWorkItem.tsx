@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { PageProps } from 'gatsby';
 
 const ProjectContent = styled.li`
   padding-left: 2%;
@@ -9,23 +10,36 @@ const ProjectContent = styled.li`
   font-weight: bold;
 `;
 
-interface IWorkItemProps {
-  careerProjectName: string;
-}
+type DataProps = {
+  allContentfulCareerWork: {
+    edges: {
+      node: {
+        work: string[];
+      };
+    }[];
+  };
+};
 
-interface ICareerWork {
-  work: string[];
-}
-
-function CareerWorkItem({ careerProjectName }: IWorkItemProps) {
+const CareerWorkItem: React.FC<PageProps<DataProps>> = ({ data }) => {
   return (
     <ul>
-      {/*{data &&*/}
-      {/*  data.map((work: ICareerWork) => (*/}
-      {/*    <ProjectContent>- {work.careerWorkContent}</ProjectContent>*/}
-      {/*  ))}*/}
+      {data &&
+        data.allContentfulCareerWork.edges.map(({ node }, index) => (
+          <ProjectContent key={index}>- {node.work}</ProjectContent>
+        ))}
     </ul>
   );
-}
+};
+
+// function CareerWorkItem({ careerProjectName }: IWorkItemProps) {
+//   return (
+//     <ul>
+//       {/*{data &&*/}
+//       {/*  data.map((work: ICareerWork) => (*/}
+//       {/*    <ProjectContent>- {work.careerWorkContent}</ProjectContent>*/}
+//       {/*  ))}*/}
+//     </ul>
+//   );
+// }
 
 export default CareerWorkItem;

@@ -52,7 +52,6 @@ const Project = styled.div`
 interface ICareer {
   company: string;
   period: string;
-  project: string[];
   order: number;
 }
 
@@ -65,7 +64,7 @@ function ProfileHistory() {
           node {
             company
             period
-            project
+            order
           }
         }
       }
@@ -75,10 +74,12 @@ function ProfileHistory() {
   useEffect(() => {
     const newCareers: ICareer[] = data.allContentfulCareer.edges.map(
       (career: any) => {
-        const { period, company, order, project } = career.node;
-        return { period, company, order, project };
+        const { period, company, order } = career.node;
+        return { period, company, order };
       },
     );
+    newCareers.sort((a, b) => a.order - b.order);
+
     setCareers(newCareers);
   }, [data]);
 
@@ -99,7 +100,7 @@ function ProfileHistory() {
                 <CompanyName>{career.company}</CompanyName>
               </Company>
               <Project>
-                <CareerProjectItem {...{ project: career.project }} />
+                <CareerProjectItem {...{ companyName: career.company }} />
               </Project>
             </CareerContent>
           ))}

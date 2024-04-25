@@ -649,7 +649,6 @@ type ContentfulCareer = ContentfulEntry & ContentfulReference & Node & {
   readonly order: Maybe<Scalars['Int']>;
   readonly parent: Maybe<Node>;
   readonly period: Maybe<Scalars['String']>;
-  readonly project: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly spaceId: Maybe<Scalars['String']>;
   readonly sys: Maybe<ContentfulCareerSys>;
   readonly updatedAt: Maybe<Scalars['Date']>;
@@ -727,7 +726,6 @@ type ContentfulCareerFieldSelector = {
   readonly order: InputMaybe<FieldSelectorEnum>;
   readonly parent: InputMaybe<NodeFieldSelector>;
   readonly period: InputMaybe<FieldSelectorEnum>;
-  readonly project: InputMaybe<FieldSelectorEnum>;
   readonly spaceId: InputMaybe<FieldSelectorEnum>;
   readonly sys: InputMaybe<ContentfulCareerSysFieldSelector>;
   readonly updatedAt: InputMaybe<FieldSelectorEnum>;
@@ -744,7 +742,6 @@ type ContentfulCareerFilterInput = {
   readonly order: InputMaybe<IntQueryOperatorInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
   readonly period: InputMaybe<StringQueryOperatorInput>;
-  readonly project: InputMaybe<StringQueryOperatorInput>;
   readonly spaceId: InputMaybe<StringQueryOperatorInput>;
   readonly sys: InputMaybe<ContentfulCareerSysFilterInput>;
   readonly updatedAt: InputMaybe<DateQueryOperatorInput>;
@@ -791,6 +788,252 @@ type ContentfulCareerGroupConnection_sumArgs = {
   field: ContentfulCareerFieldSelector;
 };
 
+type ContentfulCareerProject = ContentfulEntry & ContentfulReference & Node & {
+  readonly children: ReadonlyArray<Node>;
+  readonly company: Maybe<Scalars['String']>;
+  readonly contentful_id: Scalars['String'];
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly id: Scalars['ID'];
+  readonly internal: Internal;
+  readonly node_locale: Scalars['String'];
+  readonly order: Maybe<Scalars['Int']>;
+  readonly parent: Maybe<Node>;
+  readonly project: Maybe<ContentfulCareerProjectProject>;
+  readonly spaceId: Maybe<Scalars['String']>;
+  readonly sys: Maybe<ContentfulCareerProjectSys>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+};
+
+
+type ContentfulCareerProject_createdAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type ContentfulCareerProject_updatedAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+type ContentfulCareerProjectConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<ContentfulCareerProjectEdge>;
+  readonly group: ReadonlyArray<ContentfulCareerProjectGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<ContentfulCareerProject>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type ContentfulCareerProjectConnection_distinctArgs = {
+  field: ContentfulCareerProjectFieldSelector;
+};
+
+
+type ContentfulCareerProjectConnection_groupArgs = {
+  field: ContentfulCareerProjectFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type ContentfulCareerProjectConnection_maxArgs = {
+  field: ContentfulCareerProjectFieldSelector;
+};
+
+
+type ContentfulCareerProjectConnection_minArgs = {
+  field: ContentfulCareerProjectFieldSelector;
+};
+
+
+type ContentfulCareerProjectConnection_sumArgs = {
+  field: ContentfulCareerProjectFieldSelector;
+};
+
+type ContentfulCareerProjectEdge = {
+  readonly next: Maybe<ContentfulCareerProject>;
+  readonly node: ContentfulCareerProject;
+  readonly previous: Maybe<ContentfulCareerProject>;
+};
+
+type ContentfulCareerProjectFieldSelector = {
+  readonly children: InputMaybe<NodeFieldSelector>;
+  readonly company: InputMaybe<FieldSelectorEnum>;
+  readonly contentful_id: InputMaybe<FieldSelectorEnum>;
+  readonly createdAt: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly node_locale: InputMaybe<FieldSelectorEnum>;
+  readonly order: InputMaybe<FieldSelectorEnum>;
+  readonly parent: InputMaybe<NodeFieldSelector>;
+  readonly project: InputMaybe<ContentfulCareerProjectProjectFieldSelector>;
+  readonly spaceId: InputMaybe<FieldSelectorEnum>;
+  readonly sys: InputMaybe<ContentfulCareerProjectSysFieldSelector>;
+  readonly updatedAt: InputMaybe<FieldSelectorEnum>;
+};
+
+type ContentfulCareerProjectFilterInput = {
+  readonly children: InputMaybe<NodeFilterListInput>;
+  readonly company: InputMaybe<StringQueryOperatorInput>;
+  readonly contentful_id: InputMaybe<StringQueryOperatorInput>;
+  readonly createdAt: InputMaybe<DateQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly internal: InputMaybe<InternalFilterInput>;
+  readonly node_locale: InputMaybe<StringQueryOperatorInput>;
+  readonly order: InputMaybe<IntQueryOperatorInput>;
+  readonly parent: InputMaybe<NodeFilterInput>;
+  readonly project: InputMaybe<ContentfulCareerProjectProjectFilterInput>;
+  readonly spaceId: InputMaybe<StringQueryOperatorInput>;
+  readonly sys: InputMaybe<ContentfulCareerProjectSysFilterInput>;
+  readonly updatedAt: InputMaybe<DateQueryOperatorInput>;
+};
+
+type ContentfulCareerProjectGroupConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<ContentfulCareerProjectEdge>;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+  readonly group: ReadonlyArray<ContentfulCareerProjectGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<ContentfulCareerProject>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type ContentfulCareerProjectGroupConnection_distinctArgs = {
+  field: ContentfulCareerProjectFieldSelector;
+};
+
+
+type ContentfulCareerProjectGroupConnection_groupArgs = {
+  field: ContentfulCareerProjectFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type ContentfulCareerProjectGroupConnection_maxArgs = {
+  field: ContentfulCareerProjectFieldSelector;
+};
+
+
+type ContentfulCareerProjectGroupConnection_minArgs = {
+  field: ContentfulCareerProjectFieldSelector;
+};
+
+
+type ContentfulCareerProjectGroupConnection_sumArgs = {
+  field: ContentfulCareerProjectFieldSelector;
+};
+
+type ContentfulCareerProjectProject = {
+  readonly raw: Maybe<Scalars['String']>;
+};
+
+type ContentfulCareerProjectProjectFieldSelector = {
+  readonly raw: InputMaybe<FieldSelectorEnum>;
+};
+
+type ContentfulCareerProjectProjectFilterInput = {
+  readonly raw: InputMaybe<StringQueryOperatorInput>;
+};
+
+type ContentfulCareerProjectProjectSortInput = {
+  readonly raw: InputMaybe<SortOrderEnum>;
+};
+
+type ContentfulCareerProjectSortInput = {
+  readonly children: InputMaybe<NodeSortInput>;
+  readonly company: InputMaybe<SortOrderEnum>;
+  readonly contentful_id: InputMaybe<SortOrderEnum>;
+  readonly createdAt: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly internal: InputMaybe<InternalSortInput>;
+  readonly node_locale: InputMaybe<SortOrderEnum>;
+  readonly order: InputMaybe<SortOrderEnum>;
+  readonly parent: InputMaybe<NodeSortInput>;
+  readonly project: InputMaybe<ContentfulCareerProjectProjectSortInput>;
+  readonly spaceId: InputMaybe<SortOrderEnum>;
+  readonly sys: InputMaybe<ContentfulCareerProjectSysSortInput>;
+  readonly updatedAt: InputMaybe<SortOrderEnum>;
+};
+
+type ContentfulCareerProjectSys = {
+  readonly contentType: Maybe<ContentfulCareerProjectSysContentType>;
+  readonly revision: Maybe<Scalars['Int']>;
+  readonly type: Maybe<Scalars['String']>;
+};
+
+type ContentfulCareerProjectSysContentType = {
+  readonly sys: Maybe<ContentfulCareerProjectSysContentTypeSys>;
+};
+
+type ContentfulCareerProjectSysContentTypeFieldSelector = {
+  readonly sys: InputMaybe<ContentfulCareerProjectSysContentTypeSysFieldSelector>;
+};
+
+type ContentfulCareerProjectSysContentTypeFilterInput = {
+  readonly sys: InputMaybe<ContentfulCareerProjectSysContentTypeSysFilterInput>;
+};
+
+type ContentfulCareerProjectSysContentTypeSortInput = {
+  readonly sys: InputMaybe<ContentfulCareerProjectSysContentTypeSysSortInput>;
+};
+
+type ContentfulCareerProjectSysContentTypeSys = {
+  readonly id: Maybe<Scalars['String']>;
+  readonly linkType: Maybe<Scalars['String']>;
+  readonly type: Maybe<Scalars['String']>;
+};
+
+type ContentfulCareerProjectSysContentTypeSysFieldSelector = {
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly linkType: InputMaybe<FieldSelectorEnum>;
+  readonly type: InputMaybe<FieldSelectorEnum>;
+};
+
+type ContentfulCareerProjectSysContentTypeSysFilterInput = {
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly linkType: InputMaybe<StringQueryOperatorInput>;
+  readonly type: InputMaybe<StringQueryOperatorInput>;
+};
+
+type ContentfulCareerProjectSysContentTypeSysSortInput = {
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly linkType: InputMaybe<SortOrderEnum>;
+  readonly type: InputMaybe<SortOrderEnum>;
+};
+
+type ContentfulCareerProjectSysFieldSelector = {
+  readonly contentType: InputMaybe<ContentfulCareerProjectSysContentTypeFieldSelector>;
+  readonly revision: InputMaybe<FieldSelectorEnum>;
+  readonly type: InputMaybe<FieldSelectorEnum>;
+};
+
+type ContentfulCareerProjectSysFilterInput = {
+  readonly contentType: InputMaybe<ContentfulCareerProjectSysContentTypeFilterInput>;
+  readonly revision: InputMaybe<IntQueryOperatorInput>;
+  readonly type: InputMaybe<StringQueryOperatorInput>;
+};
+
+type ContentfulCareerProjectSysSortInput = {
+  readonly contentType: InputMaybe<ContentfulCareerProjectSysContentTypeSortInput>;
+  readonly revision: InputMaybe<SortOrderEnum>;
+  readonly type: InputMaybe<SortOrderEnum>;
+};
+
 type ContentfulCareerSortInput = {
   readonly children: InputMaybe<NodeSortInput>;
   readonly company: InputMaybe<SortOrderEnum>;
@@ -802,7 +1045,6 @@ type ContentfulCareerSortInput = {
   readonly order: InputMaybe<SortOrderEnum>;
   readonly parent: InputMaybe<NodeSortInput>;
   readonly period: InputMaybe<SortOrderEnum>;
-  readonly project: InputMaybe<SortOrderEnum>;
   readonly spaceId: InputMaybe<SortOrderEnum>;
   readonly sys: InputMaybe<ContentfulCareerSysSortInput>;
   readonly updatedAt: InputMaybe<SortOrderEnum>;
@@ -868,466 +1110,6 @@ type ContentfulCareerSysFilterInput = {
 
 type ContentfulCareerSysSortInput = {
   readonly contentType: InputMaybe<ContentfulCareerSysContentTypeSortInput>;
-  readonly revision: InputMaybe<SortOrderEnum>;
-  readonly type: InputMaybe<SortOrderEnum>;
-};
-
-type ContentfulCareerWork = ContentfulEntry & ContentfulReference & Node & {
-  readonly children: ReadonlyArray<Node>;
-  readonly contentful_id: Scalars['String'];
-  readonly createdAt: Maybe<Scalars['Date']>;
-  readonly id: Scalars['ID'];
-  readonly internal: Internal;
-  readonly node_locale: Scalars['String'];
-  readonly parent: Maybe<Node>;
-  readonly project: Maybe<Scalars['String']>;
-  readonly spaceId: Maybe<Scalars['String']>;
-  readonly sys: Maybe<ContentfulCareerWorkSys>;
-  readonly updatedAt: Maybe<Scalars['Date']>;
-  readonly work: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-};
-
-
-type ContentfulCareerWork_createdAtArgs = {
-  difference: InputMaybe<Scalars['String']>;
-  formatString: InputMaybe<Scalars['String']>;
-  fromNow: InputMaybe<Scalars['Boolean']>;
-  locale: InputMaybe<Scalars['String']>;
-};
-
-
-type ContentfulCareerWork_updatedAtArgs = {
-  difference: InputMaybe<Scalars['String']>;
-  formatString: InputMaybe<Scalars['String']>;
-  fromNow: InputMaybe<Scalars['Boolean']>;
-  locale: InputMaybe<Scalars['String']>;
-};
-
-type ContentfulCareerWorkConnection = {
-  readonly distinct: ReadonlyArray<Scalars['String']>;
-  readonly edges: ReadonlyArray<ContentfulCareerWorkEdge>;
-  readonly group: ReadonlyArray<ContentfulCareerWorkGroupConnection>;
-  readonly max: Maybe<Scalars['Float']>;
-  readonly min: Maybe<Scalars['Float']>;
-  readonly nodes: ReadonlyArray<ContentfulCareerWork>;
-  readonly pageInfo: PageInfo;
-  readonly sum: Maybe<Scalars['Float']>;
-  readonly totalCount: Scalars['Int'];
-};
-
-
-type ContentfulCareerWorkConnection_distinctArgs = {
-  field: ContentfulCareerWorkFieldSelector;
-};
-
-
-type ContentfulCareerWorkConnection_groupArgs = {
-  field: ContentfulCareerWorkFieldSelector;
-  limit: InputMaybe<Scalars['Int']>;
-  skip: InputMaybe<Scalars['Int']>;
-};
-
-
-type ContentfulCareerWorkConnection_maxArgs = {
-  field: ContentfulCareerWorkFieldSelector;
-};
-
-
-type ContentfulCareerWorkConnection_minArgs = {
-  field: ContentfulCareerWorkFieldSelector;
-};
-
-
-type ContentfulCareerWorkConnection_sumArgs = {
-  field: ContentfulCareerWorkFieldSelector;
-};
-
-type ContentfulCareerWorkEdge = {
-  readonly next: Maybe<ContentfulCareerWork>;
-  readonly node: ContentfulCareerWork;
-  readonly previous: Maybe<ContentfulCareerWork>;
-};
-
-type ContentfulCareerWorkFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly contentful_id: InputMaybe<FieldSelectorEnum>;
-  readonly createdAt: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly node_locale: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly project: InputMaybe<FieldSelectorEnum>;
-  readonly spaceId: InputMaybe<FieldSelectorEnum>;
-  readonly sys: InputMaybe<ContentfulCareerWorkSysFieldSelector>;
-  readonly updatedAt: InputMaybe<FieldSelectorEnum>;
-  readonly work: InputMaybe<FieldSelectorEnum>;
-};
-
-type ContentfulCareerWorkFilterInput = {
-  readonly children: InputMaybe<NodeFilterListInput>;
-  readonly contentful_id: InputMaybe<StringQueryOperatorInput>;
-  readonly createdAt: InputMaybe<DateQueryOperatorInput>;
-  readonly id: InputMaybe<StringQueryOperatorInput>;
-  readonly internal: InputMaybe<InternalFilterInput>;
-  readonly node_locale: InputMaybe<StringQueryOperatorInput>;
-  readonly parent: InputMaybe<NodeFilterInput>;
-  readonly project: InputMaybe<StringQueryOperatorInput>;
-  readonly spaceId: InputMaybe<StringQueryOperatorInput>;
-  readonly sys: InputMaybe<ContentfulCareerWorkSysFilterInput>;
-  readonly updatedAt: InputMaybe<DateQueryOperatorInput>;
-  readonly work: InputMaybe<StringQueryOperatorInput>;
-};
-
-type ContentfulCareerWorkGroupConnection = {
-  readonly distinct: ReadonlyArray<Scalars['String']>;
-  readonly edges: ReadonlyArray<ContentfulCareerWorkEdge>;
-  readonly field: Scalars['String'];
-  readonly fieldValue: Maybe<Scalars['String']>;
-  readonly group: ReadonlyArray<ContentfulCareerWorkGroupConnection>;
-  readonly max: Maybe<Scalars['Float']>;
-  readonly min: Maybe<Scalars['Float']>;
-  readonly nodes: ReadonlyArray<ContentfulCareerWork>;
-  readonly pageInfo: PageInfo;
-  readonly sum: Maybe<Scalars['Float']>;
-  readonly totalCount: Scalars['Int'];
-};
-
-
-type ContentfulCareerWorkGroupConnection_distinctArgs = {
-  field: ContentfulCareerWorkFieldSelector;
-};
-
-
-type ContentfulCareerWorkGroupConnection_groupArgs = {
-  field: ContentfulCareerWorkFieldSelector;
-  limit: InputMaybe<Scalars['Int']>;
-  skip: InputMaybe<Scalars['Int']>;
-};
-
-
-type ContentfulCareerWorkGroupConnection_maxArgs = {
-  field: ContentfulCareerWorkFieldSelector;
-};
-
-
-type ContentfulCareerWorkGroupConnection_minArgs = {
-  field: ContentfulCareerWorkFieldSelector;
-};
-
-
-type ContentfulCareerWorkGroupConnection_sumArgs = {
-  field: ContentfulCareerWorkFieldSelector;
-};
-
-type ContentfulCareerWorkSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly contentful_id: InputMaybe<SortOrderEnum>;
-  readonly createdAt: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly node_locale: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly project: InputMaybe<SortOrderEnum>;
-  readonly spaceId: InputMaybe<SortOrderEnum>;
-  readonly sys: InputMaybe<ContentfulCareerWorkSysSortInput>;
-  readonly updatedAt: InputMaybe<SortOrderEnum>;
-  readonly work: InputMaybe<SortOrderEnum>;
-};
-
-type ContentfulCareerWorkSys = {
-  readonly contentType: Maybe<ContentfulCareerWorkSysContentType>;
-  readonly revision: Maybe<Scalars['Int']>;
-  readonly type: Maybe<Scalars['String']>;
-};
-
-type ContentfulCareerWorkSysContentType = {
-  readonly sys: Maybe<ContentfulCareerWorkSysContentTypeSys>;
-};
-
-type ContentfulCareerWorkSysContentTypeFieldSelector = {
-  readonly sys: InputMaybe<ContentfulCareerWorkSysContentTypeSysFieldSelector>;
-};
-
-type ContentfulCareerWorkSysContentTypeFilterInput = {
-  readonly sys: InputMaybe<ContentfulCareerWorkSysContentTypeSysFilterInput>;
-};
-
-type ContentfulCareerWorkSysContentTypeSortInput = {
-  readonly sys: InputMaybe<ContentfulCareerWorkSysContentTypeSysSortInput>;
-};
-
-type ContentfulCareerWorkSysContentTypeSys = {
-  readonly id: Maybe<Scalars['String']>;
-  readonly linkType: Maybe<Scalars['String']>;
-  readonly type: Maybe<Scalars['String']>;
-};
-
-type ContentfulCareerWorkSysContentTypeSysFieldSelector = {
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly linkType: InputMaybe<FieldSelectorEnum>;
-  readonly type: InputMaybe<FieldSelectorEnum>;
-};
-
-type ContentfulCareerWorkSysContentTypeSysFilterInput = {
-  readonly id: InputMaybe<StringQueryOperatorInput>;
-  readonly linkType: InputMaybe<StringQueryOperatorInput>;
-  readonly type: InputMaybe<StringQueryOperatorInput>;
-};
-
-type ContentfulCareerWorkSysContentTypeSysSortInput = {
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly linkType: InputMaybe<SortOrderEnum>;
-  readonly type: InputMaybe<SortOrderEnum>;
-};
-
-type ContentfulCareerWorkSysFieldSelector = {
-  readonly contentType: InputMaybe<ContentfulCareerWorkSysContentTypeFieldSelector>;
-  readonly revision: InputMaybe<FieldSelectorEnum>;
-  readonly type: InputMaybe<FieldSelectorEnum>;
-};
-
-type ContentfulCareerWorkSysFilterInput = {
-  readonly contentType: InputMaybe<ContentfulCareerWorkSysContentTypeFilterInput>;
-  readonly revision: InputMaybe<IntQueryOperatorInput>;
-  readonly type: InputMaybe<StringQueryOperatorInput>;
-};
-
-type ContentfulCareerWorkSysSortInput = {
-  readonly contentType: InputMaybe<ContentfulCareerWorkSysContentTypeSortInput>;
-  readonly revision: InputMaybe<SortOrderEnum>;
-  readonly type: InputMaybe<SortOrderEnum>;
-};
-
-type ContentfulCarrer = Node & {
-  readonly children: ReadonlyArray<Node>;
-  readonly company: Maybe<Scalars['String']>;
-  readonly contentful_id: Maybe<Scalars['String']>;
-  readonly createdAt: Maybe<Scalars['Date']>;
-  readonly id: Scalars['ID'];
-  readonly internal: Internal;
-  readonly node_locale: Maybe<Scalars['String']>;
-  readonly order: Maybe<Scalars['Int']>;
-  readonly parent: Maybe<Node>;
-  readonly period: Maybe<Scalars['String']>;
-  readonly project: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-  readonly spaceId: Maybe<Scalars['String']>;
-  readonly sys: Maybe<ContentfulCarrerSys>;
-  readonly updatedAt: Maybe<Scalars['Date']>;
-};
-
-
-type ContentfulCarrer_createdAtArgs = {
-  difference: InputMaybe<Scalars['String']>;
-  formatString: InputMaybe<Scalars['String']>;
-  fromNow: InputMaybe<Scalars['Boolean']>;
-  locale: InputMaybe<Scalars['String']>;
-};
-
-
-type ContentfulCarrer_updatedAtArgs = {
-  difference: InputMaybe<Scalars['String']>;
-  formatString: InputMaybe<Scalars['String']>;
-  fromNow: InputMaybe<Scalars['Boolean']>;
-  locale: InputMaybe<Scalars['String']>;
-};
-
-type ContentfulCarrerConnection = {
-  readonly distinct: ReadonlyArray<Scalars['String']>;
-  readonly edges: ReadonlyArray<ContentfulCarrerEdge>;
-  readonly group: ReadonlyArray<ContentfulCarrerGroupConnection>;
-  readonly max: Maybe<Scalars['Float']>;
-  readonly min: Maybe<Scalars['Float']>;
-  readonly nodes: ReadonlyArray<ContentfulCarrer>;
-  readonly pageInfo: PageInfo;
-  readonly sum: Maybe<Scalars['Float']>;
-  readonly totalCount: Scalars['Int'];
-};
-
-
-type ContentfulCarrerConnection_distinctArgs = {
-  field: ContentfulCarrerFieldSelector;
-};
-
-
-type ContentfulCarrerConnection_groupArgs = {
-  field: ContentfulCarrerFieldSelector;
-  limit: InputMaybe<Scalars['Int']>;
-  skip: InputMaybe<Scalars['Int']>;
-};
-
-
-type ContentfulCarrerConnection_maxArgs = {
-  field: ContentfulCarrerFieldSelector;
-};
-
-
-type ContentfulCarrerConnection_minArgs = {
-  field: ContentfulCarrerFieldSelector;
-};
-
-
-type ContentfulCarrerConnection_sumArgs = {
-  field: ContentfulCarrerFieldSelector;
-};
-
-type ContentfulCarrerEdge = {
-  readonly next: Maybe<ContentfulCarrer>;
-  readonly node: ContentfulCarrer;
-  readonly previous: Maybe<ContentfulCarrer>;
-};
-
-type ContentfulCarrerFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly company: InputMaybe<FieldSelectorEnum>;
-  readonly contentful_id: InputMaybe<FieldSelectorEnum>;
-  readonly createdAt: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly node_locale: InputMaybe<FieldSelectorEnum>;
-  readonly order: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly period: InputMaybe<FieldSelectorEnum>;
-  readonly project: InputMaybe<FieldSelectorEnum>;
-  readonly spaceId: InputMaybe<FieldSelectorEnum>;
-  readonly sys: InputMaybe<ContentfulCarrerSysFieldSelector>;
-  readonly updatedAt: InputMaybe<FieldSelectorEnum>;
-};
-
-type ContentfulCarrerFilterInput = {
-  readonly children: InputMaybe<NodeFilterListInput>;
-  readonly company: InputMaybe<StringQueryOperatorInput>;
-  readonly contentful_id: InputMaybe<StringQueryOperatorInput>;
-  readonly createdAt: InputMaybe<DateQueryOperatorInput>;
-  readonly id: InputMaybe<StringQueryOperatorInput>;
-  readonly internal: InputMaybe<InternalFilterInput>;
-  readonly node_locale: InputMaybe<StringQueryOperatorInput>;
-  readonly order: InputMaybe<IntQueryOperatorInput>;
-  readonly parent: InputMaybe<NodeFilterInput>;
-  readonly period: InputMaybe<StringQueryOperatorInput>;
-  readonly project: InputMaybe<StringQueryOperatorInput>;
-  readonly spaceId: InputMaybe<StringQueryOperatorInput>;
-  readonly sys: InputMaybe<ContentfulCarrerSysFilterInput>;
-  readonly updatedAt: InputMaybe<DateQueryOperatorInput>;
-};
-
-type ContentfulCarrerGroupConnection = {
-  readonly distinct: ReadonlyArray<Scalars['String']>;
-  readonly edges: ReadonlyArray<ContentfulCarrerEdge>;
-  readonly field: Scalars['String'];
-  readonly fieldValue: Maybe<Scalars['String']>;
-  readonly group: ReadonlyArray<ContentfulCarrerGroupConnection>;
-  readonly max: Maybe<Scalars['Float']>;
-  readonly min: Maybe<Scalars['Float']>;
-  readonly nodes: ReadonlyArray<ContentfulCarrer>;
-  readonly pageInfo: PageInfo;
-  readonly sum: Maybe<Scalars['Float']>;
-  readonly totalCount: Scalars['Int'];
-};
-
-
-type ContentfulCarrerGroupConnection_distinctArgs = {
-  field: ContentfulCarrerFieldSelector;
-};
-
-
-type ContentfulCarrerGroupConnection_groupArgs = {
-  field: ContentfulCarrerFieldSelector;
-  limit: InputMaybe<Scalars['Int']>;
-  skip: InputMaybe<Scalars['Int']>;
-};
-
-
-type ContentfulCarrerGroupConnection_maxArgs = {
-  field: ContentfulCarrerFieldSelector;
-};
-
-
-type ContentfulCarrerGroupConnection_minArgs = {
-  field: ContentfulCarrerFieldSelector;
-};
-
-
-type ContentfulCarrerGroupConnection_sumArgs = {
-  field: ContentfulCarrerFieldSelector;
-};
-
-type ContentfulCarrerSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly company: InputMaybe<SortOrderEnum>;
-  readonly contentful_id: InputMaybe<SortOrderEnum>;
-  readonly createdAt: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly node_locale: InputMaybe<SortOrderEnum>;
-  readonly order: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly period: InputMaybe<SortOrderEnum>;
-  readonly project: InputMaybe<SortOrderEnum>;
-  readonly spaceId: InputMaybe<SortOrderEnum>;
-  readonly sys: InputMaybe<ContentfulCarrerSysSortInput>;
-  readonly updatedAt: InputMaybe<SortOrderEnum>;
-};
-
-type ContentfulCarrerSys = {
-  readonly contentType: Maybe<ContentfulCarrerSysContentType>;
-  readonly revision: Maybe<Scalars['Int']>;
-  readonly type: Maybe<Scalars['String']>;
-};
-
-type ContentfulCarrerSysContentType = {
-  readonly sys: Maybe<ContentfulCarrerSysContentTypeSys>;
-};
-
-type ContentfulCarrerSysContentTypeFieldSelector = {
-  readonly sys: InputMaybe<ContentfulCarrerSysContentTypeSysFieldSelector>;
-};
-
-type ContentfulCarrerSysContentTypeFilterInput = {
-  readonly sys: InputMaybe<ContentfulCarrerSysContentTypeSysFilterInput>;
-};
-
-type ContentfulCarrerSysContentTypeSortInput = {
-  readonly sys: InputMaybe<ContentfulCarrerSysContentTypeSysSortInput>;
-};
-
-type ContentfulCarrerSysContentTypeSys = {
-  readonly id: Maybe<Scalars['String']>;
-  readonly linkType: Maybe<Scalars['String']>;
-  readonly type: Maybe<Scalars['String']>;
-};
-
-type ContentfulCarrerSysContentTypeSysFieldSelector = {
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly linkType: InputMaybe<FieldSelectorEnum>;
-  readonly type: InputMaybe<FieldSelectorEnum>;
-};
-
-type ContentfulCarrerSysContentTypeSysFilterInput = {
-  readonly id: InputMaybe<StringQueryOperatorInput>;
-  readonly linkType: InputMaybe<StringQueryOperatorInput>;
-  readonly type: InputMaybe<StringQueryOperatorInput>;
-};
-
-type ContentfulCarrerSysContentTypeSysSortInput = {
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly linkType: InputMaybe<SortOrderEnum>;
-  readonly type: InputMaybe<SortOrderEnum>;
-};
-
-type ContentfulCarrerSysFieldSelector = {
-  readonly contentType: InputMaybe<ContentfulCarrerSysContentTypeFieldSelector>;
-  readonly revision: InputMaybe<FieldSelectorEnum>;
-  readonly type: InputMaybe<FieldSelectorEnum>;
-};
-
-type ContentfulCarrerSysFilterInput = {
-  readonly contentType: InputMaybe<ContentfulCarrerSysContentTypeFilterInput>;
-  readonly revision: InputMaybe<IntQueryOperatorInput>;
-  readonly type: InputMaybe<StringQueryOperatorInput>;
-};
-
-type ContentfulCarrerSysSortInput = {
-  readonly contentType: InputMaybe<ContentfulCarrerSysContentTypeSortInput>;
   readonly revision: InputMaybe<SortOrderEnum>;
   readonly type: InputMaybe<SortOrderEnum>;
 };
@@ -4610,8 +4392,7 @@ type Query = {
   readonly allContentfulAdmin: ContentfulAdminConnection;
   readonly allContentfulAsset: ContentfulAssetConnection;
   readonly allContentfulCareer: ContentfulCareerConnection;
-  readonly allContentfulCareerWork: ContentfulCareerWorkConnection;
-  readonly allContentfulCarrer: ContentfulCarrerConnection;
+  readonly allContentfulCareerProject: ContentfulCareerProjectConnection;
   readonly allContentfulCertLang: ContentfulCertLangConnection;
   readonly allContentfulContentType: ContentfulContentTypeConnection;
   readonly allContentfulEducation: ContentfulEducationConnection;
@@ -4637,8 +4418,7 @@ type Query = {
   readonly contentfulAdmin: Maybe<ContentfulAdmin>;
   readonly contentfulAsset: Maybe<ContentfulAsset>;
   readonly contentfulCareer: Maybe<ContentfulCareer>;
-  readonly contentfulCareerWork: Maybe<ContentfulCareerWork>;
-  readonly contentfulCarrer: Maybe<ContentfulCarrer>;
+  readonly contentfulCareerProject: Maybe<ContentfulCareerProject>;
   readonly contentfulCertLang: Maybe<ContentfulCertLang>;
   readonly contentfulContentType: Maybe<ContentfulContentType>;
   readonly contentfulEducation: Maybe<ContentfulEducation>;
@@ -4688,19 +4468,11 @@ type Query_allContentfulCareerArgs = {
 };
 
 
-type Query_allContentfulCareerWorkArgs = {
-  filter: InputMaybe<ContentfulCareerWorkFilterInput>;
+type Query_allContentfulCareerProjectArgs = {
+  filter: InputMaybe<ContentfulCareerProjectFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<ContentfulCareerWorkSortInput>>>;
-};
-
-
-type Query_allContentfulCarrerArgs = {
-  filter: InputMaybe<ContentfulCarrerFilterInput>;
-  limit: InputMaybe<Scalars['Int']>;
-  skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<ContentfulCarrerSortInput>>>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<ContentfulCareerProjectSortInput>>>;
 };
 
 
@@ -4938,30 +4710,13 @@ type Query_contentfulCareerArgs = {
   order: InputMaybe<IntQueryOperatorInput>;
   parent: InputMaybe<NodeFilterInput>;
   period: InputMaybe<StringQueryOperatorInput>;
-  project: InputMaybe<StringQueryOperatorInput>;
   spaceId: InputMaybe<StringQueryOperatorInput>;
   sys: InputMaybe<ContentfulCareerSysFilterInput>;
   updatedAt: InputMaybe<DateQueryOperatorInput>;
 };
 
 
-type Query_contentfulCareerWorkArgs = {
-  children: InputMaybe<NodeFilterListInput>;
-  contentful_id: InputMaybe<StringQueryOperatorInput>;
-  createdAt: InputMaybe<DateQueryOperatorInput>;
-  id: InputMaybe<StringQueryOperatorInput>;
-  internal: InputMaybe<InternalFilterInput>;
-  node_locale: InputMaybe<StringQueryOperatorInput>;
-  parent: InputMaybe<NodeFilterInput>;
-  project: InputMaybe<StringQueryOperatorInput>;
-  spaceId: InputMaybe<StringQueryOperatorInput>;
-  sys: InputMaybe<ContentfulCareerWorkSysFilterInput>;
-  updatedAt: InputMaybe<DateQueryOperatorInput>;
-  work: InputMaybe<StringQueryOperatorInput>;
-};
-
-
-type Query_contentfulCarrerArgs = {
+type Query_contentfulCareerProjectArgs = {
   children: InputMaybe<NodeFilterListInput>;
   company: InputMaybe<StringQueryOperatorInput>;
   contentful_id: InputMaybe<StringQueryOperatorInput>;
@@ -4971,10 +4726,9 @@ type Query_contentfulCarrerArgs = {
   node_locale: InputMaybe<StringQueryOperatorInput>;
   order: InputMaybe<IntQueryOperatorInput>;
   parent: InputMaybe<NodeFilterInput>;
-  period: InputMaybe<StringQueryOperatorInput>;
-  project: InputMaybe<StringQueryOperatorInput>;
+  project: InputMaybe<ContentfulCareerProjectProjectFilterInput>;
   spaceId: InputMaybe<StringQueryOperatorInput>;
-  sys: InputMaybe<ContentfulCarrerSysFilterInput>;
+  sys: InputMaybe<ContentfulCareerProjectSysFilterInput>;
   updatedAt: InputMaybe<DateQueryOperatorInput>;
 };
 
@@ -6970,6 +6724,11 @@ type BubbleQueryVariables = Exact<{ [key: string]: never; }>;
 
 type BubbleQuery = { readonly bubble: { readonly childImageSharp: { readonly fluid: { readonly base64: string | null, readonly aspectRatio: number, readonly src: string, readonly srcSet: string, readonly sizes: string } | null } | null } | null };
 
+type CareerWorkQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type CareerWorkQuery = { readonly allContentfulCareerProject: { readonly edges: ReadonlyArray<{ readonly node: { readonly company: string | null, readonly order: number | null, readonly project: { readonly raw: string | null } | null } }> } };
+
 type GatsbyImageSharpFixedFragment = { readonly base64: string | null, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
 
 type GatsbyImageSharpFixed_noBase64Fragment = { readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
@@ -7009,7 +6768,7 @@ type ProfileEduQuery = { readonly allContentfulEducation: { readonly edges: Read
 type ProfileHistoryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type ProfileHistoryQuery = { readonly allContentfulCareer: { readonly edges: ReadonlyArray<{ readonly node: { readonly company: string | null, readonly period: string | null, readonly project: ReadonlyArray<string | null> | null } }> } };
+type ProfileHistoryQuery = { readonly allContentfulCareer: { readonly edges: ReadonlyArray<{ readonly node: { readonly company: string | null, readonly period: string | null, readonly order: number | null } }> } };
 
 type ProfileIntroQueryVariables = Exact<{ [key: string]: never; }>;
 
