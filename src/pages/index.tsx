@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useState } from 'react';
-import type { PageProps } from 'gatsby';
 import { graphql, navigate, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
@@ -159,7 +158,7 @@ const butterflyVariants = {
   },
 };
 
-const IndexPage: React.FC<PageProps> = () => {
+const Home = () => {
   const [mushroomImg, setMushroomImg] = useState<IMushroomState>({
     [CategoryText.PROFILE]: mushroom,
     [CategoryText.SKILLS]: mushroom,
@@ -167,21 +166,31 @@ const IndexPage: React.FC<PageProps> = () => {
     [CategoryText.CONTACT]: mushroom,
   });
 
-  const data = useStaticQuery(graphql`
-    query {
-      file(relativePath: { eq: "home/grass.png" }) {
+  const { grass, butterfly1, butterfly2 } = useStaticQuery(graphql`
+    query HomeImage {
+      grass: file(relativePath: { eq: "home/grass.png" }) {
         childImageSharp {
-          fluid(maxWidth: 1920) {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      butterfly1: file(relativePath: { eq: "home/butterfly1.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      butterfly2: file(relativePath: { eq: "home/butterfly2.png" }) {
+        childImageSharp {
+          fluid {
             ...GatsbyImageSharpFluid
           }
         }
       }
     }
   `);
-
-  // export const GRASS = 'src/assets/images/home/grass.png';
-  // const BUTTERFLY_RIGHT = '/src/assets/images/home/butterfly1.png';
-  // const BUTTERFLY_LEFT = 'src/assets/images/home/butterfly2.png';
 
   const onLoginClick = () => {
     const isLogin = sessionStorage.getItem('isLogin');
@@ -217,7 +226,7 @@ const IndexPage: React.FC<PageProps> = () => {
         <Login src={rabbit} alt="rabbit" onClick={onLoginClick} />
       </div>
       <Butterfly
-        src={BUTTERFLY_LEFT}
+        src={butterfly2.childImageSharp.fluid.src}
         top="0"
         left="90%"
         variants={butterflyVariants}
@@ -225,7 +234,7 @@ const IndexPage: React.FC<PageProps> = () => {
       />
       <Title className="font-fairy-tail">Hyowon's Portfolio</Title>
       <Butterfly
-        src={BUTTERFLY_RIGHT}
+        src={butterfly1.childImageSharp.fluid.src}
         top="24%"
         left="0"
         variants={butterflyVariants}
@@ -298,7 +307,7 @@ const IndexPage: React.FC<PageProps> = () => {
         </Category>
       </CategoryWrapper>
       <BackgroundWrapper>
-        <Grass src={GRASS} />
+        <Grass src={grass.childImageSharp.fluid.src} />
         <Flowers>
           <FlowerFirstRow>
             <Flower src={flower1} transform="matrix(-1, 0, 0, 1, 0, 0)" />
@@ -315,4 +324,4 @@ const IndexPage: React.FC<PageProps> = () => {
   );
 };
 
-export default IndexPage;
+export default Home;

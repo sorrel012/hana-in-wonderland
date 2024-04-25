@@ -4627,5 +4627,10 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = { readonly tracedSVG: st
 
 type GatsbyImageSharpFluidLimitPresentationSizeFragment = { readonly maxHeight: number, readonly maxWidth: number };
 
+type HomeImageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type HomeImageQuery = { readonly grass: { readonly childImageSharp: { readonly fluid: { readonly base64: string | null, readonly aspectRatio: number, readonly src: string, readonly srcSet: string, readonly sizes: string } | null } | null } | null, readonly butterfly1: { readonly childImageSharp: { readonly fluid: { readonly base64: string | null, readonly aspectRatio: number, readonly src: string, readonly srcSet: string, readonly sizes: string } | null } | null } | null, readonly butterfly2: { readonly childImageSharp: { readonly fluid: { readonly base64: string | null, readonly aspectRatio: number, readonly src: string, readonly srcSet: string, readonly sizes: string } | null } | null } | null };
+
 
 }
