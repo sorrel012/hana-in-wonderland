@@ -116,7 +116,7 @@ function ProfileIntro() {
         <GatsbyImage
           image={mainPic?.gatsbyImageData as any}
           alt="mainPic"
-          className="main-pic"
+          className="pic-main"
         />
         <Overview>
           {titleArr.map((text: string) => (
