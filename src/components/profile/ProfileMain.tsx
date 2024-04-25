@@ -6,7 +6,6 @@ import Bubbles from '../../components/profile/Bubbles';
 import Seaweeds from '../../components/profile/Seaweeds';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { ICertification } from '../admin/profile/AdminProfileCert';
 
 const Wrapper = styled.main`
   background: ${(props) => props.theme.profile.bgColor};
@@ -90,6 +89,13 @@ const Content = styled.div`
   font-weight: bold;
   font-size: 1.8vw;
 `;
+
+interface ICertification {
+  name: string;
+  date: string;
+  score: string;
+  order: number;
+}
 
 function ProfileMain() {
   const [certifications, setCertifications] = useState<ICertification[]>([]);
