@@ -18,10 +18,10 @@ import Swal from 'sweetalert2';
 import { queryClient } from '../../../index.tsx';
 
 export interface ICertification {
-  certName: string;
-  certDate: string;
-  certScore: string;
-  certOrder: number;
+  name: string;
+  date: string;
+  score: string;
+  order: number;
 }
 
 function AdminProfileCert() {

@@ -4,11 +4,9 @@ import seashell from '../../assets/images/profile/seashell.png';
 import seashell2 from '../../assets/images/profile/seashell2.png';
 import Bubbles from '../../components/profile/Bubbles';
 import Seaweeds from '../../components/profile/Seaweeds';
-import { IMainProps } from '../../pages/profile';
-import { useQuery } from '@tanstack/react-query';
-import { getProfileCert } from '../../util/api';
+import { graphql, useStaticQuery } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { ICertification } from '../admin/profile/AdminProfileCert';
-import { AWS_URL } from '../../util/constant';
 
 const Wrapper = styled.main`
   background: ${(props) => props.theme.profile.bgColor};
@@ -31,10 +29,6 @@ const Box = styled.section`
 const PersonalInfo = styled.section`
   display: flex;
   margin-bottom: 5%;
-`;
-
-const Img = styled.img`
-  width: 20%;
 `;
 
 const Info = styled.div`
@@ -97,24 +91,64 @@ const Content = styled.div`
   font-size: 1.8vw;
 `;
 
-function ProfileMain({ subPic, name, birth, email, address }: IMainProps) {
+function ProfileMain() {
   const [certifications, setCertifications] = useState<ICertification[]>([]);
-  const { data, isLoading } = useQuery({
-    queryKey: ['profileCert'],
-    queryFn: getProfileCert,
-  });
+
+  const data = useStaticQuery(graphql`
+    query ProfileMain {
+      allContentfulProfile {
+        edges {
+          node {
+            subPic {
+              gatsbyImageData(placeholder: BLURRED)
+            }
+            name
+            birth
+            email
+            address
+          }
+        }
+      }
+      allContentfulCertLang {
+        edges {
+          node {
+            name
+            date
+            score
+            order
+          }
+        }
+      }
+    }
+  `);
+
+  const { allContentfulProfile, allContentfulCertLang } = data;
+  const { subPic, name, birth, email, address } =
+    allContentfulProfile.edges[0].node;
 
   useEffect(() => {
-    if (!isLoading && data) {
-      setCertifications(data);
+    if (allContentfulCertLang) {
+      const newCerts: ICertification[] = allContentfulCertLang.edges.map(
+        (certs: any) => {
+          const { name, date, score, order } = certs.node as ICertification;
+          return { name, date, score, order };
+        },
+      );
+      newCerts.sort((a, b) => a.order - b.order);
+
+      setCertifications(newCerts);
     }
-  }, [data, isLoading]);
+  }, [allContentfulCertLang]);
 
   return (
     <Wrapper>
       <Box>
         <PersonalInfo>
-          <Img src={`${AWS_URL}/${subPic}`} />
+          <GatsbyImage
+            image={subPic?.gatsbyImageData as any}
+            alt="subPic"
+            className="pic-sub"
+          />
           <Info>
             <LabelWrapper>
               <Label>
@@ -150,14 +184,12 @@ function ProfileMain({ subPic, name, birth, email, address }: IMainProps) {
             </Label>
           </Row>
           <CertContent>
-            {!isLoading &&
-              certifications.map((cert: ICertification) => (
-                <Content key={cert.certName}>
-                  ◾ {cert.certName}({cert.certDate})
-                  {cert.certScore ? ' - ' : ''}
-                  {cert.certScore ? cert.certScore : ''}
-                </Content>
-              ))}
+            {certifications.map((cert) => (
+              <Content key={cert.name}>
+                ◾ {cert.name}({cert.date}){cert.score ? ' - ' : ''}
+                {cert.score ? cert.score : ''}
+              </Content>
+            ))}
           </CertContent>
         </Certificate>
       </Box>

@@ -6739,5 +6739,10 @@ type ProfileIntroQueryVariables = Exact<{ [key: string]: never; }>;
 
 type ProfileIntroQuery = { readonly allContentfulProfile: { readonly edges: ReadonlyArray<{ readonly node: { readonly title: string | null, readonly mainPic: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData | null } | null, readonly content: { readonly content: string | null } | null } }> } };
 
+type ProfileMainQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type ProfileMainQuery = { readonly allContentfulProfile: { readonly edges: ReadonlyArray<{ readonly node: { readonly name: string | null, readonly birth: string | null, readonly email: string | null, readonly address: string | null, readonly subPic: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData | null } | null } }> }, readonly allContentfulCertLang: { readonly edges: ReadonlyArray<{ readonly node: { readonly name: string | null, readonly date: string | null, readonly score: string | null, readonly order: number | null } }> } };
+
 
 }

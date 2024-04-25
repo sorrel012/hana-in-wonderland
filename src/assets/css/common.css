@@ -180,10 +180,13 @@ a {
   background: white !important;
 }
 
-.main-pic {
+.pic-main {
   flex: 3;
   width: 1.5vw;
   margin-right: 2%;
+}
+.pic-sub {
+  width: 20%;
 }
 
 /*# sourceMappingURL=common.css.map */
