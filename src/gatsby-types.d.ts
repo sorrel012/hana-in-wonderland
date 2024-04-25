@@ -6739,6 +6739,11 @@ type HomeImageQueryVariables = Exact<{ [key: string]: never; }>;
 
 type HomeImageQuery = { readonly grass: { readonly childImageSharp: { readonly fluid: { readonly base64: string | null, readonly aspectRatio: number, readonly src: string, readonly srcSet: string, readonly sizes: string } | null } | null } | null, readonly butterfly1: { readonly childImageSharp: { readonly fluid: { readonly base64: string | null, readonly aspectRatio: number, readonly src: string, readonly srcSet: string, readonly sizes: string } | null } | null } | null, readonly butterfly2: { readonly childImageSharp: { readonly fluid: { readonly base64: string | null, readonly aspectRatio: number, readonly src: string, readonly srcSet: string, readonly sizes: string } | null } | null } | null };
 
+type ProfileEduQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type ProfileEduQuery = { readonly allContentfulEducation: { readonly edges: ReadonlyArray<{ readonly node: { readonly period: string | null, readonly category: string | null, readonly order: number | null, readonly content: { readonly content: string | null } | null } }> } };
+
 type ProfileIntroQueryVariables = Exact<{ [key: string]: never; }>;
 
 

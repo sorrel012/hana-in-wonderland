@@ -1,12 +1,10 @@
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import seashell2 from '../../assets/images/profile/seashell2.png';
-import Bubbles from '../../components/profile/Bubbles.tsx';
-import Seaweeds from '../../components/profile/Seaweeds.tsx';
-import { useEffect, useState } from 'react';
-import { IEducation } from '../../components/admin/profile/AdminProfileEdu.tsx';
-import { Label, Logo, Text } from './ProfileMain.tsx';
-import { useQuery } from '@tanstack/react-query';
-import { getProfileEdu } from '../../util/api.ts';
+import Bubbles from '../../components/profile/Bubbles';
+import Seaweeds from '../../components/profile/Seaweeds';
+import { Label, Logo, Text } from './ProfileMain';
+import { graphql, useStaticQuery } from 'gatsby';
 
 const Wrapper = styled.main`
   background: ${(props) => props.theme.profile.bgColor};
@@ -73,21 +71,47 @@ const Content = styled.span`
   margin-bottom: 10px;
 `;
 
+interface IEducation {
+  period: string;
+  content: string;
+  category: string;
+  order: number;
+}
+
 function ProfileEdu() {
   const [sEducations, setSEducations] = useState<IEducation[]>([]);
   const [eEducations, setEEducations] = useState<IEducation[]>([]);
 
-  const { data: eduData, isLoading: isEduLoading } = useQuery({
-    queryKey: ['profileEdu'],
-    queryFn: getProfileEdu,
-  });
+  const data = useStaticQuery<Queries.ProfileEduQuery>(graphql`
+    query ProfileEdu {
+      allContentfulEducation {
+        edges {
+          node {
+            period
+            content {
+              content
+            }
+            category
+            order
+          }
+        }
+      }
+    }
+  `);
 
   useEffect(() => {
-    if (!isEduLoading && eduData) {
-      setSEducations(eduData.filter((v: IEducation) => v.eduCategory === 'S'));
-      setEEducations(eduData.filter((v: IEducation) => v.eduCategory === 'E'));
+    if (data) {
+      const eduList = data.allContentfulEducation.edges;
+      const newEdus: IEducation[] = eduList.map((edu: any) => {
+        const { period, content, order, category } = edu.node;
+        return { period, content: content.content, order, category };
+      });
+      newEdus.sort((a, b) => a.order - b.order);
+
+      setSEducations(newEdus.filter((v: IEducation) => v.category === 'S'));
+      setEEducations(newEdus.filter((v: IEducation) => v.category === 'E'));
     }
-  }, [eduData, isEduLoading]);
+  }, [data]);
 
   return (
     <Wrapper>
@@ -101,12 +125,12 @@ function ProfileEdu() {
         <EduContent>
           <PeriodWrapper>
             {sEducations.map((edu: IEducation) => (
-              <Period key={edu.eduPeriod}>◾ {edu.eduPeriod}</Period>
+              <Period key={edu.period}>◾ {edu.period}</Period>
             ))}
           </PeriodWrapper>
           <ContentWrapper>
             {sEducations.map((edu: IEducation) => (
-              <School key={edu.eduContent}>◾ {edu.eduContent}</School>
+              <School key={edu.content}>◾ {edu.content}</School>
             ))}
           </ContentWrapper>
         </EduContent>
@@ -121,12 +145,12 @@ function ProfileEdu() {
         <EduContent>
           <PeriodWrapper>
             {eEducations.map((edu: IEducation) => (
-              <Period key={edu.eduPeriod}>◾ {edu.eduPeriod}</Period>
+              <Period key={edu.period}>◾ {edu.period}</Period>
             ))}
           </PeriodWrapper>
           <ContentWrapper>
             {eEducations.map((edu: IEducation) => (
-              <Content key={edu.eduContent}>◾ {edu.eduContent}</Content>
+              <Content key={edu.content}>◾ {edu.content}</Content>
             ))}
           </ContentWrapper>
         </EduContent>

@@ -3,6 +3,7 @@ import FullPage from '@fullpage/react-fullpage';
 import Header from '../components/Header';
 import ProfileIntro from '../components/profile/ProfileIntro';
 import ProfileMain from '../components/profile/ProfileMain';
+import ProfileEdu from '../components/profile/ProfileEdu';
 
 export interface IIntroProps {
   mainPic: string;
@@ -41,9 +42,9 @@ function Profile() {
             <div className="section">
               <ProfileMain />
             </div>
-            {/*<div className="section">*/}
-            {/*  <ProfileEdu />*/}
-            {/*</div>*/}
+            <div className="section">
+              <ProfileEdu />
+            </div>
             {/*<div className="section">*/}
             {/*  <ProfileHistory />*/}
             {/*</div>*/}
