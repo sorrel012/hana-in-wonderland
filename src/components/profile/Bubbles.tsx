@@ -40,8 +40,6 @@ function Bubbles() {
     }
   `);
 
-  console.log(bubble);
-
   return (
     <>
       {/* 첫 번째 */}
