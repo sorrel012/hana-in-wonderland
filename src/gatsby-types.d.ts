@@ -6703,6 +6703,11 @@ type contentfulProjectTbShootingSolutionTextNodeSysSortInput = {
   readonly type: InputMaybe<SortOrderEnum>;
 };
 
+type BubbleQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type BubbleQuery = { readonly bubble: { readonly childImageSharp: { readonly fluid: { readonly base64: string | null, readonly aspectRatio: number, readonly src: string, readonly srcSet: string, readonly sizes: string } | null } | null } | null };
+
 type GatsbyImageSharpFixedFragment = { readonly base64: string | null, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
 
 type GatsbyImageSharpFixed_noBase64Fragment = { readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };

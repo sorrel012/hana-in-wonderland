@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { graphql, useStaticQuery } from 'gatsby';
 
 interface IBubbleProps {
   left: string;
@@ -27,7 +28,19 @@ const bubbleVariants = (lineDelay: number) => ({
 });
 
 function Bubbles() {
-  const BUBBLE = '/images/profile/bubble.png';
+  const { bubble } = useStaticQuery(graphql`
+    query Bubble {
+      bubble: file(relativePath: { eq: "profile/bubble.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `);
+
+  console.log(bubble);
 
   return (
     <>
@@ -35,7 +48,7 @@ function Bubbles() {
       {[0, 1, 2, 3, 4].map((i) => (
         <Bubble
           key={i}
-          src={BUBBLE}
+          src={bubble.childImageSharp.fluid.src}
           left="2vw"
           variants={bubbleVariants(i)}
           animate="animate"
@@ -45,7 +58,7 @@ function Bubbles() {
       {[0.5, 1.5, 2.5, 3.5, 4.5].map((i) => (
         <Bubble
           key={i * 3}
-          src={BUBBLE}
+          src={bubble.childImageSharp.fluid.src}
           left="9vw"
           variants={bubbleVariants(i)}
           animate="animate"
@@ -55,7 +68,7 @@ function Bubbles() {
       {[0.5, 1.5, 2.5, 3.5, 4.5].map((i) => (
         <Bubble
           key={i * 5}
-          src={BUBBLE}
+          src={bubble.childImageSharp.fluid.src}
           left="86vw"
           variants={bubbleVariants(i)}
           animate="animate"
@@ -65,7 +78,7 @@ function Bubbles() {
       {[0, 1, 2, 3, 4].map((i) => (
         <Bubble
           key={i * 10}
-          src={BUBBLE}
+          src={bubble.childImageSharp.fluid.src}
           left="93vw"
           variants={bubbleVariants(i)}
           animate="animate"
