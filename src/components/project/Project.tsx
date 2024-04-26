@@ -1,5 +1,5 @@
+import React from 'react';
 import styled from 'styled-components';
-import ProjectItem from './ProjectItem.tsx';
 
 import line from '../../assets/images/projects/line.png';
 import finish from '../../assets/images/projects/finish.png';
@@ -57,7 +57,7 @@ function Project() {
         <TitleHeader>PROJECTS</TitleHeader>
       </Title>
       <Content>
-        <ProjectItem />
+        {/*<ProjectItem />*/}
         <Flag src={finish} alt="finish" />
       </Content>
       <RaceImg src={line} alt="line" />

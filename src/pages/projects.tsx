@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Header from '../components/Header';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import Project from '../components/project/Project';
 
 const Wrapper = styled.main`
   height: 100vh;
@@ -107,7 +108,7 @@ function Projects() {
           className="pic-turtle-rabbit"
         />
       </Turtle>
-      <div ref={projectRef}>{/*<Project />*/}</div>
+      <div ref={projectRef}>{<Project />}</div>
       <Rabbit variants={rabbitVariants} animate="scroll">
         <GatsbyImage
           image={getImage(rabbit.childImageSharp)!}
