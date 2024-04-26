@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const Wrapper = styled.section`
   width: 90%;
@@ -23,9 +24,6 @@ const Title = styled.h3`
 
 const ImageContainer = styled.div`
   width: 80%;
-`;
-const Image = styled.img`
-  width: 100%;
 `;
 
 const Content = styled.section``;
@@ -84,12 +82,13 @@ const Github = styled.a``;
 const Deployment = styled.a`
   margin-left: 3%;
 `;
+
 interface IProject {
   name: string;
   periodCnt: string;
   frontSkills: string[];
   backSkills: string[];
-  pic: {};
+  pic: { gatsbyImageData: {} };
   githubPath: string;
   deployPath: string;
   order: number;
@@ -127,62 +126,63 @@ function ProjectItem() {
 
   return (
     <>
-      {/*{data &&*/}
-      {/*  data.map((project: IProject) => (*/}
-      {/*    <Wrapper key={project.projectName}>*/}
-      {/*      <Title>{project.projectName}</Title>*/}
-      {/*      <ImageContainer>*/}
-      {/*        <Image*/}
-      {/*          src={`${AWS_URL}/${project.projectPic}`}*/}
-      {/*          alt={project.projectName}*/}
-      {/*        />*/}
-      {/*      </ImageContainer>*/}
-      {/*      <Content>*/}
-      {/*        <Period>*/}
-      {/*          <Label>*/}
-      {/*            <LabelImg src={flag} alt="flag" />*/}
-      {/*            <LabelText>기간</LabelText>*/}
-      {/*          </Label>*/}
-      {/*          <PeriodText>{project.projectPeriodCnt}</PeriodText>*/}
-      {/*        </Period>*/}
-      {/*        <Skills>*/}
-      {/*          <Label>*/}
-      {/*            <LabelImg src={flag} alt="flag" />*/}
-      {/*            <LabelText>주요 기술</LabelText>*/}
-      {/*          </Label>*/}
-      {/*          <ul>*/}
-      {/*            <Text>{project.projectFrontSkills}</Text>*/}
-      {/*            <Text>{project.projectBackSkills}</Text>*/}
-      {/*          </ul>*/}
-      {/*        </Skills>*/}
-      {/*        <Overview>*/}
-      {/*          <Label>*/}
-      {/*            <LabelImg src={flag} alt="flag" />*/}
-      {/*            <LabelText>주요 기능</LabelText>*/}
-      {/*          </Label>*/}
-      {/*          <ProjectFnItem {...{ projectName: project.projectName }} />*/}
-      {/*        </Overview>*/}
-      {/*        <TroubleShooting>*/}
-      {/*          <Label>*/}
-      {/*            <LabelImg src={flag} alt="flag" />*/}
-      {/*            <LabelText>문제 해결</LabelText>*/}
-      {/*          </Label>*/}
-      {/*          <ProjectTbStItem {...{ projectName: project.projectName }} />*/}
-      {/*        </TroubleShooting>*/}
-      {/*      </Content>*/}
-      {/*      <Links>*/}
-      {/*        <Github*/}
-      {/*          href="https://github.com/sorrel012/postcard"*/}
-      {/*          target="_blank"*/}
-      {/*        >*/}
-      {/*          <LogoImg src={github} alt="github" />*/}
-      {/*        </Github>*/}
-      {/*        <Deployment>*/}
-      {/*          <LogoImg src={site} alt="deploy" />*/}
-      {/*        </Deployment>*/}
-      {/*      </Links>*/}
-      {/*    </Wrapper>*/}
-      {/*  ))}*/}
+      {projects &&
+        projects.map((project: IProject) => (
+          <Wrapper key={project.name}>
+            <Title>{project.name}</Title>
+            <ImageContainer>
+              <GatsbyImage
+                image={project?.pic?.gatsbyImageData as any}
+                alt={project.name}
+                className="pic-project"
+              />
+            </ImageContainer>
+            {/*<Content>*/}
+            {/*  <Period>*/}
+            {/*    <Label>*/}
+            {/*      <LabelImg src={flag} alt="flag" />*/}
+            {/*      <LabelText>기간</LabelText>*/}
+            {/*    </Label>*/}
+            {/*    <PeriodText>{project.projectPeriodCnt}</PeriodText>*/}
+            {/*  </Period>*/}
+            {/*  <Skills>*/}
+            {/*    <Label>*/}
+            {/*      <LabelImg src={flag} alt="flag" />*/}
+            {/*      <LabelText>주요 기술</LabelText>*/}
+            {/*    </Label>*/}
+            {/*    <ul>*/}
+            {/*      <Text>{project.projectFrontSkills}</Text>*/}
+            {/*      <Text>{project.projectBackSkills}</Text>*/}
+            {/*    </ul>*/}
+            {/*  </Skills>*/}
+            {/*  <Overview>*/}
+            {/*    <Label>*/}
+            {/*      <LabelImg src={flag} alt="flag" />*/}
+            {/*      <LabelText>주요 기능</LabelText>*/}
+            {/*    </Label>*/}
+            {/*    <ProjectFnItem {...{ projectName: project.projectName }} />*/}
+            {/*  </Overview>*/}
+            {/*  <TroubleShooting>*/}
+            {/*    <Label>*/}
+            {/*      <LabelImg src={flag} alt="flag" />*/}
+            {/*      <LabelText>문제 해결</LabelText>*/}
+            {/*    </Label>*/}
+            {/*    <ProjectTbStItem {...{ projectName: project.projectName }} />*/}
+            {/*  </TroubleShooting>*/}
+            {/*</Content>*/}
+            {/*<Links>*/}
+            {/*  <Github*/}
+            {/*    href="https://github.com/sorrel012/postcard"*/}
+            {/*    target="_blank"*/}
+            {/*  >*/}
+            {/*    <LogoImg src={github} alt="github" />*/}
+            {/*  </Github>*/}
+            {/*  <Deployment>*/}
+            {/*    <LogoImg src={site} alt="deploy" />*/}
+            {/*  </Deployment>*/}
+            {/*</Links>*/}
+          </Wrapper>
+        ))}
     </>
   );
 }

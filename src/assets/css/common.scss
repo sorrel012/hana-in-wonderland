@@ -242,5 +242,9 @@ a {
   &-rest {
     width: 17%;
     position: absolute;
-    right: 1%;}
+    right: 1%;
+  }
+  &-project {
+    width: 100%;
+  }
 }
