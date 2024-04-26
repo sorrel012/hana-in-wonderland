@@ -209,5 +209,13 @@ a {
   width: 35%;
   padding: 0 7px;
 }
+.pic-turtle-rabbit {
+  width: 100%;
+}
+.pic-rest {
+  width: 17%;
+  position: absolute;
+  right: 1%;
+}
 
 /*# sourceMappingURL=common.css.map */

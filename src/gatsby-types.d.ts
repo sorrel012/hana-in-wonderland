@@ -3813,6 +3813,7 @@ type ImageFit =
   | 'outside';
 
 type ImageFormat =
+  | ''
   | 'avif'
   | 'jpg'
   | ''
@@ -6778,6 +6779,11 @@ type ProfileMainQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type ProfileMainQuery = { readonly allContentfulProfile: { readonly edges: ReadonlyArray<{ readonly node: { readonly name: string | null, readonly birth: string | null, readonly email: string | null, readonly address: string | null, readonly subPic: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData | null } | null } }> }, readonly allContentfulCertLang: { readonly edges: ReadonlyArray<{ readonly node: { readonly name: string | null, readonly date: string | null, readonly score: string | null, readonly order: number | null } }> } };
+
+type ProjectsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type ProjectsQuery = { readonly turtle: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null, readonly rabbit: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null, readonly rest: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null };
 
 type SkillsQueryVariables = Exact<{ [key: string]: never; }>;
 
