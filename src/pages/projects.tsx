@@ -39,7 +39,7 @@ function Projects() {
   const [moveRange, setMoveRange] = useState<number>(0);
 
   const { turtle, rabbit, rest } = useStaticQuery(graphql`
-    query Projects {
+    query ProjectImage {
       turtle: file(relativePath: { eq: "projects/project-turtle.png" }) {
         childImageSharp {
           gatsbyImageData(placeholder: BLURRED)

@@ -1,13 +1,6 @@
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import flag from '../../assets/images/projects/flag.png';
-import github from '../../assets/images/projects/github.png';
-import site from '../../assets/images/projects/site.png';
-import { useQuery } from '@tanstack/react-query';
-import { getProjects } from '../../util/api.ts';
-import { IProject } from '../admin/projects/AdminProject.tsx';
-import { AWS_URL } from '../../util/constant.ts';
-import ProjectFnItem from './ProjectFnItem.tsx';
-import ProjectTbStItem from './ProjectTbStItem.tsx';
+import { graphql, useStaticQuery } from 'gatsby';
 
 const Wrapper = styled.section`
   width: 90%;
@@ -91,72 +84,105 @@ const Github = styled.a``;
 const Deployment = styled.a`
   margin-left: 3%;
 `;
+interface IProject {
+  name: string;
+  periodCnt: string;
+  frontSkills: string[];
+  backSkills: string[];
+  pic: {};
+  githubPath: string;
+  deployPath: string;
+  order: number;
+}
 
 function ProjectItem() {
-  const { data, isLoading } = useQuery({
-    queryKey: ['projects'],
-    queryFn: getProjects,
-  });
+  const [projects, setProjects] = useState<IProject[]>([]);
+
+  const data = useStaticQuery(graphql`
+    query Projects {
+      allContentfulProject {
+        nodes {
+          name
+          periodCnt
+          frontSkills
+          backSkills
+          pic {
+            gatsbyImageData(placeholder: NONE)
+          }
+          githubPath
+          deployPath
+          order
+        }
+      }
+    }
+  `);
+
+  useEffect(() => {
+    if (data) {
+      const newProjects: IProject[] = data.allContentfulProject.nodes;
+      newProjects.sort((a, b) => a.order - b.order);
+      setProjects(newProjects);
+    }
+  }, [data]);
 
   return (
     <>
-      {!isLoading &&
-        data &&
-        data.map((project: IProject) => (
-          <Wrapper key={project.projectName}>
-            <Title>{project.projectName}</Title>
-            <ImageContainer>
-              <Image
-                src={`${AWS_URL}/${project.projectPic}`}
-                alt={project.projectName}
-              />
-            </ImageContainer>
-            <Content>
-              <Period>
-                <Label>
-                  <LabelImg src={flag} alt="flag" />
-                  <LabelText>기간</LabelText>
-                </Label>
-                <PeriodText>{project.projectPeriodCnt}</PeriodText>
-              </Period>
-              <Skills>
-                <Label>
-                  <LabelImg src={flag} alt="flag" />
-                  <LabelText>주요 기술</LabelText>
-                </Label>
-                <ul>
-                  <Text>{project.projectFrontSkills}</Text>
-                  <Text>{project.projectBackSkills}</Text>
-                </ul>
-              </Skills>
-              <Overview>
-                <Label>
-                  <LabelImg src={flag} alt="flag" />
-                  <LabelText>주요 기능</LabelText>
-                </Label>
-                <ProjectFnItem {...{ projectName: project.projectName }} />
-              </Overview>
-              <TroubleShooting>
-                <Label>
-                  <LabelImg src={flag} alt="flag" />
-                  <LabelText>문제 해결</LabelText>
-                </Label>
-                <ProjectTbStItem {...{ projectName: project.projectName }} />
-              </TroubleShooting>
-            </Content>
-            <Links>
-              <Github
-                href="https://github.com/sorrel012/postcard"
-                target="_blank"
-              >
-                <LogoImg src={github} alt="github" />
-              </Github>
-              <Deployment>
-                <LogoImg src={site} alt="deploy" />
-              </Deployment>
-            </Links>
-          </Wrapper>
-        ))}
+      {/*{data &&*/}
+      {/*  data.map((project: IProject) => (*/}
+      {/*    <Wrapper key={project.projectName}>*/}
+      {/*      <Title>{project.projectName}</Title>*/}
+      {/*      <ImageContainer>*/}
+      {/*        <Image*/}
+      {/*          src={`${AWS_URL}/${project.projectPic}`}*/}
+      {/*          alt={project.projectName}*/}
+      {/*        />*/}
+      {/*      </ImageContainer>*/}
+      {/*      <Content>*/}
+      {/*        <Period>*/}
+      {/*          <Label>*/}
+      {/*            <LabelImg src={flag} alt="flag" />*/}
+      {/*            <LabelText>기간</LabelText>*/}
+      {/*          </Label>*/}
+      {/*          <PeriodText>{project.projectPeriodCnt}</PeriodText>*/}
+      {/*        </Period>*/}
+      {/*        <Skills>*/}
+      {/*          <Label>*/}
+      {/*            <LabelImg src={flag} alt="flag" />*/}
+      {/*            <LabelText>주요 기술</LabelText>*/}
+      {/*          </Label>*/}
+      {/*          <ul>*/}
+      {/*            <Text>{project.projectFrontSkills}</Text>*/}
+      {/*            <Text>{project.projectBackSkills}</Text>*/}
+      {/*          </ul>*/}
+      {/*        </Skills>*/}
+      {/*        <Overview>*/}
+      {/*          <Label>*/}
+      {/*            <LabelImg src={flag} alt="flag" />*/}
+      {/*            <LabelText>주요 기능</LabelText>*/}
+      {/*          </Label>*/}
+      {/*          <ProjectFnItem {...{ projectName: project.projectName }} />*/}
+      {/*        </Overview>*/}
+      {/*        <TroubleShooting>*/}
+      {/*          <Label>*/}
+      {/*            <LabelImg src={flag} alt="flag" />*/}
+      {/*            <LabelText>문제 해결</LabelText>*/}
+      {/*          </Label>*/}
+      {/*          <ProjectTbStItem {...{ projectName: project.projectName }} />*/}
+      {/*        </TroubleShooting>*/}
+      {/*      </Content>*/}
+      {/*      <Links>*/}
+      {/*        <Github*/}
+      {/*          href="https://github.com/sorrel012/postcard"*/}
+      {/*          target="_blank"*/}
+      {/*        >*/}
+      {/*          <LogoImg src={github} alt="github" />*/}
+      {/*        </Github>*/}
+      {/*        <Deployment>*/}
+      {/*          <LogoImg src={site} alt="deploy" />*/}
+      {/*        </Deployment>*/}
+      {/*      </Links>*/}
+      {/*    </Wrapper>*/}
+      {/*  ))}*/}
     </>
   );
 }

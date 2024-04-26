@@ -2146,6 +2146,7 @@ type ContentfulProject = ContentfulEntry & ContentfulReference & Node & {
   readonly children: ReadonlyArray<Node>;
   readonly contentful_id: Scalars['String'];
   readonly createdAt: Maybe<Scalars['Date']>;
+  readonly deployPath: Maybe<Scalars['String']>;
   readonly frontSkills: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly githubPath: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
@@ -2227,6 +2228,7 @@ type ContentfulProjectFieldSelector = {
   readonly children: InputMaybe<NodeFieldSelector>;
   readonly contentful_id: InputMaybe<FieldSelectorEnum>;
   readonly createdAt: InputMaybe<FieldSelectorEnum>;
+  readonly deployPath: InputMaybe<FieldSelectorEnum>;
   readonly frontSkills: InputMaybe<FieldSelectorEnum>;
   readonly githubPath: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
@@ -2247,6 +2249,7 @@ type ContentfulProjectFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
   readonly contentful_id: InputMaybe<StringQueryOperatorInput>;
   readonly createdAt: InputMaybe<DateQueryOperatorInput>;
+  readonly deployPath: InputMaybe<StringQueryOperatorInput>;
   readonly frontSkills: InputMaybe<StringQueryOperatorInput>;
   readonly githubPath: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
@@ -2552,6 +2555,7 @@ type ContentfulProjectSortInput = {
   readonly children: InputMaybe<NodeSortInput>;
   readonly contentful_id: InputMaybe<SortOrderEnum>;
   readonly createdAt: InputMaybe<SortOrderEnum>;
+  readonly deployPath: InputMaybe<SortOrderEnum>;
   readonly frontSkills: InputMaybe<SortOrderEnum>;
   readonly githubPath: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
@@ -4842,6 +4846,7 @@ type Query_contentfulProjectArgs = {
   children: InputMaybe<NodeFilterListInput>;
   contentful_id: InputMaybe<StringQueryOperatorInput>;
   createdAt: InputMaybe<DateQueryOperatorInput>;
+  deployPath: InputMaybe<StringQueryOperatorInput>;
   frontSkills: InputMaybe<StringQueryOperatorInput>;
   githubPath: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
@@ -6780,10 +6785,15 @@ type ProfileMainQueryVariables = Exact<{ [key: string]: never; }>;
 
 type ProfileMainQuery = { readonly allContentfulProfile: { readonly edges: ReadonlyArray<{ readonly node: { readonly name: string | null, readonly birth: string | null, readonly email: string | null, readonly address: string | null, readonly subPic: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData | null } | null } }> }, readonly allContentfulCertLang: { readonly edges: ReadonlyArray<{ readonly node: { readonly name: string | null, readonly date: string | null, readonly score: string | null, readonly order: number | null } }> } };
 
+type ProjectImageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type ProjectImageQuery = { readonly turtle: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null, readonly rabbit: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null, readonly rest: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null };
+
 type ProjectsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type ProjectsQuery = { readonly turtle: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null, readonly rabbit: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null, readonly rest: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null };
+type ProjectsQuery = { readonly allContentfulProject: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly periodCnt: string | null, readonly frontSkills: ReadonlyArray<string | null> | null, readonly backSkills: ReadonlyArray<string | null> | null, readonly githubPath: string | null, readonly deployPath: string | null, readonly order: number | null, readonly pic: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData | null } | null }> } };
 
 type SkillsQueryVariables = Exact<{ [key: string]: never; }>;
 

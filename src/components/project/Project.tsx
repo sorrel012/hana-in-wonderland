@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import line from '../../assets/images/projects/line.png';
 import finish from '../../assets/images/projects/finish.png';
+import ProjectItem from './ProjectItem';
 
 const Wrapper = styled.div`
   width: 60%;
@@ -57,7 +58,7 @@ function Project() {
         <TitleHeader>PROJECTS</TitleHeader>
       </Title>
       <Content>
-        {/*<ProjectItem />*/}
+        <ProjectItem />
         <Flag src={finish} alt="finish" />
       </Content>
       <RaceImg src={line} alt="line" />
