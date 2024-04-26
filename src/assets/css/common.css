@@ -188,5 +188,26 @@ a {
 .pic-sub {
   width: 20%;
 }
+.pic-sun {
+  width: 20vw;
+}
+.pic-tree {
+  width: 40vw;
+}
+.pic-apple {
+  display: inline-block;
+  width: 40%;
+  padding: 7px;
+}
+.pic-peach {
+  display: inline-block;
+  width: 22%;
+  padding: 7px;
+}
+.pic-orange {
+  display: inline-block;
+  width: 35%;
+  padding: 0 7px;
+}
 
 /*# sourceMappingURL=common.css.map */

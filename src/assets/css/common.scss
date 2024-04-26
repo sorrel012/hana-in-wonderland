@@ -215,4 +215,25 @@ a {
   &-sub {
     width: 20%;
   }
+  &-sun {
+    width: 20vw;
+  }
+  &-tree {
+    width: 40vw;
+  }
+  &-apple {
+    display: inline-block;
+    width: 40% ;
+    padding: 7px ;
+  }
+  &-peach {
+    display: inline-block;
+    width: 22% ;
+    padding: 7px ;
+  }
+  &-orange {
+    display: inline-block;
+    width: 35% ;
+    padding: 0 7px ;
+  }
 }

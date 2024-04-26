@@ -6780,5 +6780,10 @@ type ProfileMainQueryVariables = Exact<{ [key: string]: never; }>;
 
 type ProfileMainQuery = { readonly allContentfulProfile: { readonly edges: ReadonlyArray<{ readonly node: { readonly name: string | null, readonly birth: string | null, readonly email: string | null, readonly address: string | null, readonly subPic: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData | null } | null } }> }, readonly allContentfulCertLang: { readonly edges: ReadonlyArray<{ readonly node: { readonly name: string | null, readonly date: string | null, readonly score: string | null, readonly order: number | null } }> } };
 
+type SkillsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type SkillsQuery = { readonly sun: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null, readonly tree: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null, readonly apple: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null, readonly peach: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null, readonly orange: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null, readonly skills: { readonly edges: ReadonlyArray<{ readonly node: { readonly front: ReadonlyArray<{ readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly back: ReadonlyArray<{ readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly tool: ReadonlyArray<{ readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null } }> } };
+
 
 }
