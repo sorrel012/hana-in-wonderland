@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
+import github from '../../assets/images/projects/github.png';
+import site from '../../assets/images/projects/site.png';
+import flag from '../../assets/images/projects/flag.png';
+
 const Wrapper = styled.section`
   width: 90%;
   background: ${(props) => props.theme.projects.contentBgColor};
@@ -53,9 +57,15 @@ const PeriodText = styled.div`
 const Skills = styled.section``;
 
 export const Text = styled.li`
+  display: inline-block;
   font-size: 1.6vw;
   margin-top: 1.5%;
   line-height: 1.3;
+  color: #79422f;
+  background-color: ${(props) => props.theme.projects.wrapperBgColor};
+  border-radius: 10px;
+  padding: 1% 2%;
+  margin-right: 1%;
 `;
 
 const Overview = styled.section``;
@@ -77,11 +87,11 @@ const LogoImg = styled.img`
   border-radius: 50%;
 `;
 
-const Github = styled.a``;
-
-const Deployment = styled.a`
+const Github = styled.a`
   margin-left: 3%;
 `;
+
+const Deployment = styled.a``;
 
 interface IProject {
   name: string;
@@ -137,50 +147,53 @@ function ProjectItem() {
                 className="pic-project"
               />
             </ImageContainer>
-            {/*<Content>*/}
-            {/*  <Period>*/}
-            {/*    <Label>*/}
-            {/*      <LabelImg src={flag} alt="flag" />*/}
-            {/*      <LabelText>기간</LabelText>*/}
-            {/*    </Label>*/}
-            {/*    <PeriodText>{project.projectPeriodCnt}</PeriodText>*/}
-            {/*  </Period>*/}
-            {/*  <Skills>*/}
-            {/*    <Label>*/}
-            {/*      <LabelImg src={flag} alt="flag" />*/}
-            {/*      <LabelText>주요 기술</LabelText>*/}
-            {/*    </Label>*/}
-            {/*    <ul>*/}
-            {/*      <Text>{project.projectFrontSkills}</Text>*/}
-            {/*      <Text>{project.projectBackSkills}</Text>*/}
-            {/*    </ul>*/}
-            {/*  </Skills>*/}
-            {/*  <Overview>*/}
-            {/*    <Label>*/}
-            {/*      <LabelImg src={flag} alt="flag" />*/}
-            {/*      <LabelText>주요 기능</LabelText>*/}
-            {/*    </Label>*/}
-            {/*    <ProjectFnItem {...{ projectName: project.projectName }} />*/}
-            {/*  </Overview>*/}
-            {/*  <TroubleShooting>*/}
-            {/*    <Label>*/}
-            {/*      <LabelImg src={flag} alt="flag" />*/}
-            {/*      <LabelText>문제 해결</LabelText>*/}
-            {/*    </Label>*/}
-            {/*    <ProjectTbStItem {...{ projectName: project.projectName }} />*/}
-            {/*  </TroubleShooting>*/}
-            {/*</Content>*/}
-            {/*<Links>*/}
-            {/*  <Github*/}
-            {/*    href="https://github.com/sorrel012/postcard"*/}
-            {/*    target="_blank"*/}
-            {/*  >*/}
-            {/*    <LogoImg src={github} alt="github" />*/}
-            {/*  </Github>*/}
-            {/*  <Deployment>*/}
-            {/*    <LogoImg src={site} alt="deploy" />*/}
-            {/*  </Deployment>*/}
-            {/*</Links>*/}
+            <Content>
+              <Period>
+                <Label>
+                  <LabelImg src={flag} alt="flag" />
+                  <LabelText>기간</LabelText>
+                </Label>
+                <PeriodText>{project.periodCnt}</PeriodText>
+              </Period>
+              <Skills>
+                <Label>
+                  <LabelImg src={flag} alt="flag" />
+                  <LabelText>주요 기술</LabelText>
+                </Label>
+                <ul>
+                  {project.frontSkills.map((skill) => (
+                    <Text>{skill}</Text>
+                  ))}
+                  {project.backSkills.map((skill) => (
+                    <Text>{skill}</Text>
+                  ))}
+                </ul>
+              </Skills>
+              {/*  <Overview>*/}
+              {/*    <Label>*/}
+              {/*      <LabelImg src={flag} alt="flag" />*/}
+              {/*      <LabelText>주요 기능</LabelText>*/}
+              {/*    </Label>*/}
+              {/*    <ProjectFnItem {...{ projectName: project.projectName }} />*/}
+              {/*  </Overview>*/}
+              {/*  <TroubleShooting>*/}
+              {/*    <Label>*/}
+              {/*      <LabelImg src={flag} alt="flag" />*/}
+              {/*      <LabelText>문제 해결</LabelText>*/}
+              {/*    </Label>*/}
+              {/*    <ProjectTbStItem {...{ projectName: project.projectName }} />*/}
+              {/*  </TroubleShooting>*/}
+            </Content>
+            <Links>
+              {project.deployPath !== 'x' && (
+                <Deployment href={project.deployPath} target="_blank">
+                  <LogoImg src={site} alt="deploy" />
+                </Deployment>
+              )}
+              <Github href={project.githubPath} target="_blank">
+                <LogoImg src={github} alt="github" />
+              </Github>
+            </Links>
           </Wrapper>
         ))}
     </>
