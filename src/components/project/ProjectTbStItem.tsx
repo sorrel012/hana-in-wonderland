@@ -1,8 +1,7 @@
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { IProjectProps } from './ProjectFnItem.tsx';
-import { useQuery } from '@tanstack/react-query';
-import { getProjectTbStItem } from '../../util/api.ts';
-import { IProjectTbShooting } from '../admin/projects/AdminProjectTbShooting.tsx';
+import { IProjectProps } from './ProjectFnItem';
+import { graphql, useStaticQuery } from 'gatsby';
 
 const TroubleShootingBox = styled.li`
   font-size: 1.6vw;
@@ -20,20 +19,67 @@ const Trouble = styled.div`
 
 const Solution = styled.div``;
 
+interface IProjectTbShootingData {
+  name: string;
+  error: { error: {} };
+  solution: { solution: {} };
+  order: number;
+}
+
+interface IProjectTbShooting {
+  name: string;
+  error: string;
+  solution: string;
+  order: number;
+}
+
 function ProjectTbStItem({ projectName }: IProjectProps) {
-  const { data, isLoading } = useQuery({
-    queryKey: ['projectTbShooting', { projectName }],
-    queryFn: ({ signal }) => getProjectTbStItem({ signal, projectName }),
-  });
+  const [tbShootings, setTbShootings] = useState<IProjectTbShooting[]>([]);
+
+  const data = useStaticQuery(graphql`
+    query TbShooting {
+      allContentfulProjectTbShooting {
+        edges {
+          node {
+            name
+            error {
+              error
+            }
+            solution {
+              solution
+            }
+            order
+          }
+        }
+      }
+    }
+  `);
+
+  useEffect(() => {
+    if (data) {
+      const tbShootings = data.allContentfulProjectTbShooting.edges.map(
+        (tbShooting: { node: IProjectTbShootingData }) => ({
+          ...tbShooting.node,
+          error: tbShooting.node.error.error,
+          solution: tbShooting.node.solution.solution,
+        }),
+      );
+      const newTbShooting: IProjectTbShooting[] = tbShootings.filter(
+        (tbShooting: IProjectTbShooting) => tbShooting.name === projectName,
+      );
+      newTbShooting.sort((a, b) => a.order - b.order);
+      console.log(newTbShooting);
+      setTbShootings(newTbShooting);
+    }
+  }, [data]);
 
   return (
     <ul>
-      {!isLoading &&
-        data &&
-        data.map((tbSt: IProjectTbShooting) => (
-          <TroubleShootingBox key={tbSt.projectError}>
-            <Trouble>❔ {tbSt.projectError}</Trouble>
-            <Solution>❕ {tbSt.projectSolution}</Solution>
+      {tbShootings &&
+        tbShootings.map((tbSt: IProjectTbShooting, index) => (
+          <TroubleShootingBox key={index}>
+            <Trouble>❔ {tbSt.error}</Trouble>
+            <Solution>❕ {tbSt.solution}</Solution>
           </TroubleShootingBox>
         ))}
     </ul>

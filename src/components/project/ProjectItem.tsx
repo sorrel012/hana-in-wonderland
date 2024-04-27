@@ -7,6 +7,7 @@ import github from '../../assets/images/projects/github.png';
 import site from '../../assets/images/projects/site.png';
 import flag from '../../assets/images/projects/flag.png';
 import ProjectFnItem from './ProjectFnItem';
+import ProjectTbStItem from './ProjectTbStItem';
 
 const Wrapper = styled.section`
   width: 90%;
@@ -59,7 +60,7 @@ const Skills = styled.section``;
 
 const Text = styled.li`
   display: inline-block;
-  font-size: 1.6vw;
+  font-size: 1.5vw;
   margin-top: 1.5%;
   line-height: 1.3;
   background-color: rgba(212, 163, 115, 0.36);
@@ -176,13 +177,13 @@ function ProjectItem() {
                 </Label>
                 <ProjectFnItem {...{ projectName: project.name }} />
               </Overview>
-              {/*  <TroubleShooting>*/}
-              {/*    <Label>*/}
-              {/*      <LabelImg src={flag} alt="flag" />*/}
-              {/*      <LabelText>문제 해결</LabelText>*/}
-              {/*    </Label>*/}
-              {/*    <ProjectTbStItem {...{ projectName: project.projectName }} />*/}
-              {/*  </TroubleShooting>*/}
+              <TroubleShooting>
+                <Label>
+                  <LabelImg src={flag} alt="flag" />
+                  <LabelText>문제 해결</LabelText>
+                </Label>
+                <ProjectTbStItem {...{ projectName: project.name }} />
+              </TroubleShooting>
             </Content>
             <Links>
               {project.deployPath !== 'x' && (

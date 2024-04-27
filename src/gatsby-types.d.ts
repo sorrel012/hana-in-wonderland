@@ -6805,5 +6805,10 @@ type SkillsQueryVariables = Exact<{ [key: string]: never; }>;
 
 type SkillsQuery = { readonly sun: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null, readonly tree: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null, readonly apple: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null, readonly peach: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null, readonly orange: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null, readonly skills: { readonly edges: ReadonlyArray<{ readonly node: { readonly front: ReadonlyArray<{ readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly back: ReadonlyArray<{ readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null, readonly tool: ReadonlyArray<{ readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData | null } | null> | null } }> } };
 
+type TbShootingQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type TbShootingQuery = { readonly allContentfulProjectTbShooting: { readonly edges: ReadonlyArray<{ readonly node: { readonly name: string | null, readonly order: number | null, readonly error: { readonly error: string | null } | null, readonly solution: { readonly solution: string | null } | null } }> } };
+
 
 }

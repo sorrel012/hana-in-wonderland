@@ -7,7 +7,7 @@ const Text = styled.div`
   font-size: 1.6vw;
 `;
 
-interface IProjectProps {
+export interface IProjectProps {
   projectName: string;
 }
 
