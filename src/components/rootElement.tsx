@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from '../assets/css/theme';
 import { Provider } from 'react-redux';
 import store from '../../src/store/store';
-import './src/assets/css/common.css';
+import '../../src/assets/css/common.css';
 
 export const queryClient = new QueryClient();
 
