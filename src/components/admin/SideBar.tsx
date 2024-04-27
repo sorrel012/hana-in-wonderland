@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
-import { adminActions } from '../../store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { adminActions, RootState } from '../../store/store';
 import { graphql, Link, navigate, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
@@ -65,13 +65,10 @@ interface IAdmin {
 
 function SideBar() {
   const dispatch = useDispatch();
-  // const { name, id } = useSelector((state: RootState) => state.admin);
+  const { name, id } = useSelector((state: RootState) => state.admin);
   const [pic, setPic] = useState<{ gatsbyImageData: {} }>({
     gatsbyImageData: {},
   });
-
-  const name = 'Hana';
-  const id = 'sorrel012';
 
   const data = useStaticQuery(graphql`
     query AdminProfile {

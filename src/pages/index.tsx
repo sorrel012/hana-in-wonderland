@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { graphql, navigate, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
@@ -147,17 +147,6 @@ const mushroomVariants = {
   hover: { scale: 1.1, transition: { duration: 0.3 } },
 };
 
-const butterflyVariants = {
-  left: {
-    x: [0, -window.innerWidth],
-    transition: { repeat: Infinity, duration: 15 },
-  },
-  right: {
-    x: [0, window.innerWidth],
-    transition: { repeat: Infinity, duration: 13 },
-  },
-};
-
 const Home = () => {
   const [mushroomImg, setMushroomImg] = useState<IMushroomState>({
     [CategoryText.PROFILE]: mushroom,
@@ -165,6 +154,22 @@ const Home = () => {
     [CategoryText.PROJECT]: mushroom,
     [CategoryText.CONTACT]: mushroom,
   });
+  const [innerWidth, setInnerWidth] = useState(0);
+
+  useEffect(() => {
+    setInnerWidth(window.innerWidth);
+  }, []);
+
+  const butterflyVariants = {
+    left: {
+      x: [0, -innerWidth],
+      transition: { repeat: Infinity, duration: 15 },
+    },
+    right: {
+      x: [0, innerWidth],
+      transition: { repeat: Infinity, duration: 13 },
+    },
+  };
 
   const { grass, butterfly1, butterfly2 } = useStaticQuery(graphql`
     query HomeImage {

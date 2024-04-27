@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { graphql, useStaticQuery } from 'gatsby';
@@ -15,19 +15,9 @@ const Bubble = styled(motion.img)<IBubbleProps>`
   opacity: 0;
 `;
 
-const bubbleVariants = (lineDelay: number) => ({
-  animate: {
-    y: [0, -window.innerHeight - 10],
-    opacity: [1, 0],
-    transition: {
-      repeat: Infinity,
-      duration: 5,
-      delay: lineDelay,
-    },
-  },
-});
-
 function Bubbles() {
+  const [innerHeight, setInnerHeight] = useState(0);
+
   const { bubble } = useStaticQuery(graphql`
     query Bubble {
       bubble: file(relativePath: { eq: "profile/bubble.png" }) {
@@ -39,6 +29,22 @@ function Bubbles() {
       }
     }
   `);
+
+  useEffect(() => {
+    setInnerHeight(window.innerHeight);
+  }, []);
+
+  const bubbleVariants = (lineDelay: number) => ({
+    animate: {
+      y: [0, -innerHeight - 10],
+      opacity: [1, 0],
+      transition: {
+        repeat: Infinity,
+        duration: 5,
+        delay: lineDelay,
+      },
+    },
+  });
 
   return (
     <>
