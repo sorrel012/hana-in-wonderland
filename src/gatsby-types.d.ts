@@ -6503,6 +6503,11 @@ type HomeImageQueryVariables = Exact<{ [key: string]: never; }>;
 
 type HomeImageQuery = { readonly grass: { readonly childImageSharp: { readonly fluid: { readonly base64: string | null, readonly aspectRatio: number, readonly src: string, readonly srcSet: string, readonly sizes: string } | null } | null } | null, readonly butterfly1: { readonly childImageSharp: { readonly fluid: { readonly base64: string | null, readonly aspectRatio: number, readonly src: string, readonly srcSet: string, readonly sizes: string } | null } | null } | null, readonly butterfly2: { readonly childImageSharp: { readonly fluid: { readonly base64: string | null, readonly aspectRatio: number, readonly src: string, readonly srcSet: string, readonly sizes: string } | null } | null } | null };
 
+type LoginGrassQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type LoginGrassQuery = { readonly grass: { readonly childImageSharp: { readonly fluid: { readonly base64: string | null, readonly aspectRatio: number, readonly src: string, readonly srcSet: string, readonly sizes: string } | null } | null } | null, readonly rabbit: { readonly childImageSharp: { readonly fluid: { readonly base64: string | null, readonly aspectRatio: number, readonly src: string, readonly srcSet: string, readonly sizes: string } | null } | null } | null, readonly book: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null };
+
 type ProfileEduQueryVariables = Exact<{ [key: string]: never; }>;
 
 

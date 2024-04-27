@@ -223,5 +223,11 @@ a {
 .pic-wing {
   width: 20%;
 }
+.pic-book {
+  background-size: contain;
+  background-position: center center;
+  width: 50%;
+  position: relative;
+}
 
 /*# sourceMappingURL=common.css.map */

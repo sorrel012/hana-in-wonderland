@@ -250,4 +250,10 @@ a {
   &-wing {
     width: 20%;
   }
+  &-book {
+    background-size: contain;
+    background-position: center center;
+    width: 50%;
+    position: relative;
+  }
 }
