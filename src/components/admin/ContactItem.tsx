@@ -1,5 +1,5 @@
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useState } from 'react';
 
 const ContactBox = styled.section`
   background-color: ${(props) => props.theme.admin.wrapperBgColor};

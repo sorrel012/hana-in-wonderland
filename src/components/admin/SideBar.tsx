@@ -1,8 +1,10 @@
+import React, { useEffect, useState } from 'react';
+
 import styled from 'styled-components';
-import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { adminActions } from '../../store/store.ts';
-import { AWS_URL } from '../../util/constant.ts';
+import { adminActions } from '../../store/store';
+import { graphql, Link, navigate, useStaticQuery } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const Wrapper = styled.nav`
   background-color: ${(props) => props.theme.admin.navBgColor};
@@ -18,14 +20,6 @@ const LoginUser = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
-
-const UserImg = styled.img`
-  width: 7vw;
-  height: 7.5vw;
-  background-color: white;
-  border-radius: 50%;
-  margin-bottom: 5%;
 `;
 
 const UserName = styled.div`
@@ -65,13 +59,45 @@ const Logout = styled.button`
 `;
 
 interface IAdmin {
-  name: string;
-  pic: string;
+  id: string;
+  pic: { gatsbyImageData: {} };
 }
 
-function SideBar({ name, pic }: IAdmin) {
+function SideBar() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const { name, id } = useSelector((state: RootState) => state.admin);
+  const [pic, setPic] = useState<{ gatsbyImageData: {} }>({
+    gatsbyImageData: {},
+  });
+
+  const name = 'Hana';
+  const id = 'sorrel012';
+
+  const data = useStaticQuery(graphql`
+    query AdminProfile {
+      allContentfulAdmin {
+        nodes {
+          contentfulid
+          pic {
+            gatsbyImageData(placeholder: BLURRED)
+          }
+        }
+      }
+    }
+  `);
+
+  useEffect(() => {
+    if (data) {
+      const adminList: IAdmin[] = data.allContentfulAdmin.nodes.map(
+        (node: { contentfulid: string; pic: {} }) => ({
+          ...node,
+          id: node.contentfulid,
+        }),
+      );
+      const loginAdmin = adminList.filter((admin) => admin.id === id);
+      setPic(loginAdmin[0].pic);
+    }
+  }, [data]);
 
   const handleLogout = () => {
     dispatch(
@@ -87,47 +113,18 @@ function SideBar({ name, pic }: IAdmin) {
   return (
     <Wrapper>
       <LoginUser>
-        <UserImg src={`${AWS_URL}/${pic}`} alt="profile-pic" />
+        <GatsbyImage
+          image={pic?.gatsbyImageData as any}
+          alt="profile-pic"
+          className="pic-user"
+        />
         <UserName>{name}</UserName>
       </LoginUser>
       <Categories>
-        <NavLink
-          to="/admin"
-          className={({ isActive }) => (isActive ? 'isActive' : '')}
-          end
-        >
-          home
-        </NavLink>
-        <NavLink
-          to="/admin/profile"
-          className={({ isActive }) => (isActive ? 'isActive' : '')}
-        >
-          profile
-        </NavLink>
-        <NavLink
-          to="/admin/skills"
-          className={({ isActive }) => (isActive ? 'isActive' : '')}
-        >
-          skills
-        </NavLink>
-        <NavLink
-          to="/admin/projects"
-          className={({ isActive }) => (isActive ? 'isActive' : '')}
-        >
-          projects
-        </NavLink>
-        <NavLink
-          to="/admin/contact"
-          className={({ isActive }) => (isActive ? 'isActive' : '')}
-        >
+        <Link to="/admin" className="isActive">
           contact
-        </NavLink>
-        <NavLink
-          to="/"
-          className={({ isActive }) => (isActive ? 'isActive' : '')}
-        >
-          main
-        </NavLink>
+        </Link>
+        <Link to="/">main</Link>
       </Categories>
       <Logout onClick={handleLogout}>LOGOUT</Logout>
     </Wrapper>

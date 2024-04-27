@@ -17,11 +17,13 @@ const apiUrlSlice = createSlice({
 interface IAdminState {
   name: string;
   pic: string;
+  id: string;
 }
 
 const adminInitialState: IAdminState = {
   name: '',
   pic: '',
+  id: '',
 };
 
 const adminSlice = createSlice({
@@ -31,10 +33,12 @@ const adminSlice = createSlice({
     login(state, action) {
       state.name = action.payload.name;
       state.pic = action.payload.pic;
+      state.id = action.payload.id;
     },
     logout(state) {
       state.name = '';
       state.pic = '';
+      state.id = '';
     },
   },
 });

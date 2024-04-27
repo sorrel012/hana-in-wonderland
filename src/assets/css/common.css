@@ -229,5 +229,12 @@ a {
   width: 50%;
   position: relative;
 }
+.pic-user {
+  width: 7vw;
+  height: 7.5vw;
+  background-color: white;
+  border-radius: 50%;
+  margin-bottom: 5%;
+}
 
 /*# sourceMappingURL=common.css.map */

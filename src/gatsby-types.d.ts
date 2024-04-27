@@ -50,6 +50,232 @@ type BooleanQueryOperatorInput = {
   readonly nin: InputMaybe<ReadonlyArray<InputMaybe<Scalars['Boolean']>>>;
 };
 
+type ContentfulAdmin = ContentfulEntry & ContentfulReference & Node & {
+  readonly children: ReadonlyArray<Node>;
+  readonly contentful_id: Scalars['String'];
+  readonly contentfulid: Maybe<Scalars['String']>;
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly id: Scalars['ID'];
+  readonly internal: Internal;
+  readonly node_locale: Scalars['String'];
+  readonly parent: Maybe<Node>;
+  readonly pic: Maybe<ContentfulAsset>;
+  readonly spaceId: Maybe<Scalars['String']>;
+  readonly sys: Maybe<ContentfulAdminSys>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+};
+
+
+type ContentfulAdmin_createdAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type ContentfulAdmin_updatedAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+type ContentfulAdminConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<ContentfulAdminEdge>;
+  readonly group: ReadonlyArray<ContentfulAdminGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<ContentfulAdmin>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type ContentfulAdminConnection_distinctArgs = {
+  field: ContentfulAdminFieldSelector;
+};
+
+
+type ContentfulAdminConnection_groupArgs = {
+  field: ContentfulAdminFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type ContentfulAdminConnection_maxArgs = {
+  field: ContentfulAdminFieldSelector;
+};
+
+
+type ContentfulAdminConnection_minArgs = {
+  field: ContentfulAdminFieldSelector;
+};
+
+
+type ContentfulAdminConnection_sumArgs = {
+  field: ContentfulAdminFieldSelector;
+};
+
+type ContentfulAdminEdge = {
+  readonly next: Maybe<ContentfulAdmin>;
+  readonly node: ContentfulAdmin;
+  readonly previous: Maybe<ContentfulAdmin>;
+};
+
+type ContentfulAdminFieldSelector = {
+  readonly children: InputMaybe<NodeFieldSelector>;
+  readonly contentful_id: InputMaybe<FieldSelectorEnum>;
+  readonly contentfulid: InputMaybe<FieldSelectorEnum>;
+  readonly createdAt: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly node_locale: InputMaybe<FieldSelectorEnum>;
+  readonly parent: InputMaybe<NodeFieldSelector>;
+  readonly pic: InputMaybe<ContentfulAssetFieldSelector>;
+  readonly spaceId: InputMaybe<FieldSelectorEnum>;
+  readonly sys: InputMaybe<ContentfulAdminSysFieldSelector>;
+  readonly updatedAt: InputMaybe<FieldSelectorEnum>;
+};
+
+type ContentfulAdminFilterInput = {
+  readonly children: InputMaybe<NodeFilterListInput>;
+  readonly contentful_id: InputMaybe<StringQueryOperatorInput>;
+  readonly contentfulid: InputMaybe<StringQueryOperatorInput>;
+  readonly createdAt: InputMaybe<DateQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly internal: InputMaybe<InternalFilterInput>;
+  readonly node_locale: InputMaybe<StringQueryOperatorInput>;
+  readonly parent: InputMaybe<NodeFilterInput>;
+  readonly pic: InputMaybe<ContentfulAssetFilterInput>;
+  readonly spaceId: InputMaybe<StringQueryOperatorInput>;
+  readonly sys: InputMaybe<ContentfulAdminSysFilterInput>;
+  readonly updatedAt: InputMaybe<DateQueryOperatorInput>;
+};
+
+type ContentfulAdminGroupConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<ContentfulAdminEdge>;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+  readonly group: ReadonlyArray<ContentfulAdminGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<ContentfulAdmin>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type ContentfulAdminGroupConnection_distinctArgs = {
+  field: ContentfulAdminFieldSelector;
+};
+
+
+type ContentfulAdminGroupConnection_groupArgs = {
+  field: ContentfulAdminFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type ContentfulAdminGroupConnection_maxArgs = {
+  field: ContentfulAdminFieldSelector;
+};
+
+
+type ContentfulAdminGroupConnection_minArgs = {
+  field: ContentfulAdminFieldSelector;
+};
+
+
+type ContentfulAdminGroupConnection_sumArgs = {
+  field: ContentfulAdminFieldSelector;
+};
+
+type ContentfulAdminSortInput = {
+  readonly children: InputMaybe<NodeSortInput>;
+  readonly contentful_id: InputMaybe<SortOrderEnum>;
+  readonly contentfulid: InputMaybe<SortOrderEnum>;
+  readonly createdAt: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly internal: InputMaybe<InternalSortInput>;
+  readonly node_locale: InputMaybe<SortOrderEnum>;
+  readonly parent: InputMaybe<NodeSortInput>;
+  readonly pic: InputMaybe<ContentfulAssetSortInput>;
+  readonly spaceId: InputMaybe<SortOrderEnum>;
+  readonly sys: InputMaybe<ContentfulAdminSysSortInput>;
+  readonly updatedAt: InputMaybe<SortOrderEnum>;
+};
+
+type ContentfulAdminSys = {
+  readonly contentType: Maybe<ContentfulAdminSysContentType>;
+  readonly revision: Maybe<Scalars['Int']>;
+  readonly type: Maybe<Scalars['String']>;
+};
+
+type ContentfulAdminSysContentType = {
+  readonly sys: Maybe<ContentfulAdminSysContentTypeSys>;
+};
+
+type ContentfulAdminSysContentTypeFieldSelector = {
+  readonly sys: InputMaybe<ContentfulAdminSysContentTypeSysFieldSelector>;
+};
+
+type ContentfulAdminSysContentTypeFilterInput = {
+  readonly sys: InputMaybe<ContentfulAdminSysContentTypeSysFilterInput>;
+};
+
+type ContentfulAdminSysContentTypeSortInput = {
+  readonly sys: InputMaybe<ContentfulAdminSysContentTypeSysSortInput>;
+};
+
+type ContentfulAdminSysContentTypeSys = {
+  readonly id: Maybe<Scalars['String']>;
+  readonly linkType: Maybe<Scalars['String']>;
+  readonly type: Maybe<Scalars['String']>;
+};
+
+type ContentfulAdminSysContentTypeSysFieldSelector = {
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly linkType: InputMaybe<FieldSelectorEnum>;
+  readonly type: InputMaybe<FieldSelectorEnum>;
+};
+
+type ContentfulAdminSysContentTypeSysFilterInput = {
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly linkType: InputMaybe<StringQueryOperatorInput>;
+  readonly type: InputMaybe<StringQueryOperatorInput>;
+};
+
+type ContentfulAdminSysContentTypeSysSortInput = {
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly linkType: InputMaybe<SortOrderEnum>;
+  readonly type: InputMaybe<SortOrderEnum>;
+};
+
+type ContentfulAdminSysFieldSelector = {
+  readonly contentType: InputMaybe<ContentfulAdminSysContentTypeFieldSelector>;
+  readonly revision: InputMaybe<FieldSelectorEnum>;
+  readonly type: InputMaybe<FieldSelectorEnum>;
+};
+
+type ContentfulAdminSysFilterInput = {
+  readonly contentType: InputMaybe<ContentfulAdminSysContentTypeFilterInput>;
+  readonly revision: InputMaybe<IntQueryOperatorInput>;
+  readonly type: InputMaybe<StringQueryOperatorInput>;
+};
+
+type ContentfulAdminSysSortInput = {
+  readonly contentType: InputMaybe<ContentfulAdminSysContentTypeSortInput>;
+  readonly revision: InputMaybe<SortOrderEnum>;
+  readonly type: InputMaybe<SortOrderEnum>;
+};
+
 type ContentfulAsset = ContentfulReference & Node & RemoteFile & {
   readonly children: ReadonlyArray<Node>;
   readonly contentful_id: Scalars['String'];
@@ -3586,7 +3812,6 @@ type ImageFormat =
   | ''
   | 'avif'
   | 'jpg'
-  | ''
   | 'png'
   | 'webp';
 
@@ -4159,6 +4384,7 @@ type PotraceTurnPolicy =
   | 'white';
 
 type Query = {
+  readonly allContentfulAdmin: ContentfulAdminConnection;
   readonly allContentfulAsset: ContentfulAssetConnection;
   readonly allContentfulCareer: ContentfulCareerConnection;
   readonly allContentfulCareerProject: ContentfulCareerProjectConnection;
@@ -4184,6 +4410,7 @@ type Query = {
   readonly allSiteFunction: SiteFunctionConnection;
   readonly allSitePage: SitePageConnection;
   readonly allSitePlugin: SitePluginConnection;
+  readonly contentfulAdmin: Maybe<ContentfulAdmin>;
   readonly contentfulAsset: Maybe<ContentfulAsset>;
   readonly contentfulCareer: Maybe<ContentfulCareer>;
   readonly contentfulCareerProject: Maybe<ContentfulCareerProject>;
@@ -4209,6 +4436,14 @@ type Query = {
   readonly siteFunction: Maybe<SiteFunction>;
   readonly sitePage: Maybe<SitePage>;
   readonly sitePlugin: Maybe<SitePlugin>;
+};
+
+
+type Query_allContentfulAdminArgs = {
+  filter: InputMaybe<ContentfulAdminFilterInput>;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<ContentfulAdminSortInput>>>;
 };
 
 
@@ -4409,6 +4644,22 @@ type Query_allSitePluginArgs = {
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
   sort: InputMaybe<ReadonlyArray<InputMaybe<SitePluginSortInput>>>;
+};
+
+
+type Query_contentfulAdminArgs = {
+  children: InputMaybe<NodeFilterListInput>;
+  contentful_id: InputMaybe<StringQueryOperatorInput>;
+  contentfulid: InputMaybe<StringQueryOperatorInput>;
+  createdAt: InputMaybe<DateQueryOperatorInput>;
+  id: InputMaybe<StringQueryOperatorInput>;
+  internal: InputMaybe<InternalFilterInput>;
+  node_locale: InputMaybe<StringQueryOperatorInput>;
+  parent: InputMaybe<NodeFilterInput>;
+  pic: InputMaybe<ContentfulAssetFilterInput>;
+  spaceId: InputMaybe<StringQueryOperatorInput>;
+  sys: InputMaybe<ContentfulAdminSysFilterInput>;
+  updatedAt: InputMaybe<DateQueryOperatorInput>;
 };
 
 
@@ -6461,6 +6712,11 @@ type contentfulProjectTbShootingSolutionTextNodeSysFilterInput = {
 type contentfulProjectTbShootingSolutionTextNodeSysSortInput = {
   readonly type: InputMaybe<SortOrderEnum>;
 };
+
+type AdminProfileQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type AdminProfileQuery = { readonly allContentfulAdmin: { readonly nodes: ReadonlyArray<{ readonly contentfulid: string | null, readonly pic: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData | null } | null }> } };
 
 type BubbleQueryVariables = Exact<{ [key: string]: never; }>;
 

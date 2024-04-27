@@ -114,6 +114,7 @@ function Login() {
             adminActions.login({
               name: response.data.result.name,
               pic: response.data.result.pic,
+              id: response.data.result.id,
             }),
           );
           navigate('/admin');
