@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import store from './src/store/store';
 import './src/assets/css/common.css';
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 export const wrapRootElement: React.FC<{ element: React.ReactNode }> = ({
   element,

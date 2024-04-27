@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IContactProps } from '../pages/Contact.tsx';
+import { IContactProps } from '../pages/contact';
 
 const apiUrl = process.env.GATSBY_API_URL;
 
