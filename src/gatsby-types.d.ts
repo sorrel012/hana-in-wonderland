@@ -6785,6 +6785,11 @@ type ProfileMainQueryVariables = Exact<{ [key: string]: never; }>;
 
 type ProfileMainQuery = { readonly allContentfulProfile: { readonly edges: ReadonlyArray<{ readonly node: { readonly name: string | null, readonly birth: string | null, readonly email: string | null, readonly address: string | null, readonly subPic: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData | null } | null } }> }, readonly allContentfulCertLang: { readonly edges: ReadonlyArray<{ readonly node: { readonly name: string | null, readonly date: string | null, readonly score: string | null, readonly order: number | null } }> } };
 
+type ProjectFnQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type ProjectFnQuery = { readonly allContentfulProjectFunction: { readonly edges: ReadonlyArray<{ readonly node: { readonly name: string | null, readonly title: string | null, readonly order: number | null, readonly content: { readonly content: string | null } | null } }> } };
+
 type ProjectImageQueryVariables = Exact<{ [key: string]: never; }>;
 
 

@@ -6,6 +6,7 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 import github from '../../assets/images/projects/github.png';
 import site from '../../assets/images/projects/site.png';
 import flag from '../../assets/images/projects/flag.png';
+import ProjectFnItem from './ProjectFnItem';
 
 const Wrapper = styled.section`
   width: 90%;
@@ -27,14 +28,14 @@ const Title = styled.h3`
 `;
 
 const ImageContainer = styled.div`
-  width: 80%;
+  width: 100%;
 `;
 
 const Content = styled.section``;
 
 const Label = styled.div`
   display: flex;
-  margin-top: 3%;
+  margin-top: 5%;
 `;
 
 const LabelImg = styled.img`
@@ -56,13 +57,12 @@ const PeriodText = styled.div`
 
 const Skills = styled.section``;
 
-export const Text = styled.li`
+const Text = styled.li`
   display: inline-block;
   font-size: 1.6vw;
   margin-top: 1.5%;
   line-height: 1.3;
-  color: #79422f;
-  background-color: ${(props) => props.theme.projects.wrapperBgColor};
+  background-color: rgba(212, 163, 115, 0.36);
   border-radius: 10px;
   padding: 1% 2%;
   margin-right: 1%;
@@ -161,21 +161,21 @@ function ProjectItem() {
                   <LabelText>주요 기술</LabelText>
                 </Label>
                 <ul>
-                  {project.frontSkills.map((skill) => (
-                    <Text>{skill}</Text>
+                  {project.frontSkills.map((skill, index) => (
+                    <Text key={index}>{skill}</Text>
                   ))}
-                  {project.backSkills.map((skill) => (
-                    <Text>{skill}</Text>
+                  {project.backSkills.map((skill, index) => (
+                    <Text key={index}>{skill}</Text>
                   ))}
                 </ul>
               </Skills>
-              {/*  <Overview>*/}
-              {/*    <Label>*/}
-              {/*      <LabelImg src={flag} alt="flag" />*/}
-              {/*      <LabelText>주요 기능</LabelText>*/}
-              {/*    </Label>*/}
-              {/*    <ProjectFnItem {...{ projectName: project.projectName }} />*/}
-              {/*  </Overview>*/}
+              <Overview>
+                <Label>
+                  <LabelImg src={flag} alt="flag" />
+                  <LabelText>주요 기능</LabelText>
+                </Label>
+                <ProjectFnItem {...{ projectName: project.name }} />
+              </Overview>
               {/*  <TroubleShooting>*/}
               {/*    <Label>*/}
               {/*      <LabelImg src={flag} alt="flag" />*/}
