@@ -7,8 +7,8 @@ require('dotenv').config({
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `hwh-in-wonderland`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: `HwH in Wonderland`,
+    siteUrl: `https://www.hwh-in-wonderland.com`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -26,6 +26,15 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/assets/images`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `HwH in Wonderland`,
+        short_name: `HwH in Wonderland`,
+        start_url: `/`,
+        icon: './assets/images/favicon.png',
       },
     },
     'gatsby-plugin-image',
