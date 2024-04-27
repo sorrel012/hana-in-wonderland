@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import SideBar from '../components/admin/SideBar';
 import AdminContact from '../components/admin/AdminContact';
+import SideBar from '../components/admin/SideBar';
 
 const Wrapper = styled.nav`
   display: flex;

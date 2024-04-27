@@ -66,9 +66,7 @@ interface IAdmin {
 function SideBar() {
   const dispatch = useDispatch();
   const { name, id } = useSelector((state: RootState) => state.admin);
-  const [pic, setPic] = useState<{ gatsbyImageData: {} }>({
-    gatsbyImageData: {},
-  });
+  const [pic, setPic] = useState<any>(null);
 
   const data = useStaticQuery(graphql`
     query AdminProfile {
@@ -110,11 +108,13 @@ function SideBar() {
   return (
     <Wrapper>
       <LoginUser>
-        <GatsbyImage
-          image={pic?.gatsbyImageData as any}
-          alt="profile-pic"
-          className="pic-user"
-        />
+        {pic?.gatsbyImageData && (
+          <GatsbyImage
+            image={pic.gatsbyImageData as any}
+            alt="profile-pic"
+            className="pic-user"
+          />
+        )}
         <UserName>{name}</UserName>
       </LoginUser>
       <Categories>
