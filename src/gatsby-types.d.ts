@@ -3812,6 +3812,7 @@ type ImageFormat =
   | ''
   | 'avif'
   | 'jpg'
+  | ''
   | 'png'
   | 'webp';
 

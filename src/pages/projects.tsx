@@ -32,6 +32,10 @@ const Rabbit = styled(motion.div)`
   opacity: 0;
 `;
 
+const Tree = styled(motion.div)`
+  opacity: 0;
+`;
+
 function Projects() {
   const scrollRef = useRef<HTMLElement>(null);
   const projectRef = useRef<HTMLDivElement>(null);
@@ -98,6 +102,12 @@ function Projects() {
     },
   };
 
+  const treeVariants = {
+    show: {
+      opacity: 1,
+    },
+  };
+
   return (
     <Wrapper ref={scrollRef}>
       <Header category="projects" />
@@ -116,12 +126,14 @@ function Projects() {
           className="pic-turtle-rabbit"
         />
       </Rabbit>
-      <GatsbyImage
-        image={getImage(rest.childImageSharp)!}
-        alt="rest"
-        className="pic-rest"
-        style={{ top: moveRange / 1.4 }}
-      />
+      <Tree variants={treeVariants} animate="show">
+        <GatsbyImage
+          image={getImage(rest.childImageSharp)!}
+          alt="rest"
+          className="pic-rest"
+          style={{ top: moveRange / 1.4 }}
+        />
+      </Tree>
     </Wrapper>
   );
 }
