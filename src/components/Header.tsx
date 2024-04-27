@@ -8,7 +8,7 @@ const HeaderWrapper = styled.header<IHeaderProps>`
   width: 100vw;
   display: flex;
   justify-content: space-between;
-  padding: 2%;
+  padding: 2% 3%;
   z-index: 99;
 `;
 
