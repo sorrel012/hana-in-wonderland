@@ -34,7 +34,7 @@ const config: GatsbyConfig = {
         name: `HwH in Wonderland`,
         short_name: `HwH in Wonderland`,
         start_url: `/`,
-        icon: './assets/images/favicon.png',
+        icon: './src/assets/images/favicon.png',
       },
     },
     'gatsby-plugin-image',
