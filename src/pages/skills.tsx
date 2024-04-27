@@ -159,13 +159,13 @@ function Skills() {
         edges {
           node {
             front {
-              gatsbyImageData(placeholder: NONE)
+              gatsbyImageData(placeholder: BLURRED)
             }
             back {
-              gatsbyImageData(placeholder: NONE)
+              gatsbyImageData(placeholder: BLURRED)
             }
             tool {
-              gatsbyImageData(placeholder: NONE)
+              gatsbyImageData(placeholder: BLURRED)
             }
           }
         }
