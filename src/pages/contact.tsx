@@ -9,6 +9,7 @@ import { saveContact } from '../util/api';
 import { queryClient } from '../../gatsby-browser';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import Seo from '../components/Seo';
 
 const Wrapper = styled.main`
   height: 100vh;
@@ -395,3 +396,5 @@ function Contact() {
 }
 
 export default Contact;
+
+export const Head = () => <Seo />;

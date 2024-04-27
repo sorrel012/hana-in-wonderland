@@ -22,6 +22,7 @@ import { adminActions, RootState } from '../store/store';
 import styled from 'styled-components';
 import { graphql, navigate, useStaticQuery } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import Seo from '../components/Seo';
 
 const Wrapper = styled.main`
   height: 100vh;
@@ -196,3 +197,5 @@ function Login() {
 }
 
 export default Login;
+
+export const Head = () => <Seo />;

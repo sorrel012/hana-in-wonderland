@@ -5,6 +5,7 @@ import ProfileIntro from '../components/profile/ProfileIntro';
 import ProfileMain from '../components/profile/ProfileMain';
 import ProfileEdu from '../components/profile/ProfileEdu';
 import ProfileHistory from '../components/profile/ProfileHistory';
+import Seo from '../components/Seo';
 
 function Profile() {
   return (
@@ -46,3 +47,5 @@ function Profile() {
 }
 
 export default Profile;
+
+export const Head = () => <Seo />;

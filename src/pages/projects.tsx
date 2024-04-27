@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import Project from '../components/project/Project';
+import Seo from '../components/Seo';
 
 const Wrapper = styled.main`
   height: 100vh;
@@ -139,3 +140,5 @@ function Projects() {
 }
 
 export default Projects;
+
+export const Head = () => <Seo />;

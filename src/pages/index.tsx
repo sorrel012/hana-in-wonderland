@@ -12,6 +12,7 @@ import flower2 from '../assets/images/home/flower2.png';
 import flower3 from '../assets/images/home/flower3.png';
 import flower4 from '../assets/images/home/flower4.png';
 import flower5 from '../assets/images/home/flower5.png';
+import Seo from '../components/Seo';
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -330,3 +331,5 @@ const Home = () => {
 };
 
 export default Home;
+
+export const Head = () => <Seo />;

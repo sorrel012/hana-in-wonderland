@@ -6800,6 +6800,11 @@ type ProjectsQueryVariables = Exact<{ [key: string]: never; }>;
 
 type ProjectsQuery = { readonly allContentfulProject: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly periodCnt: string | null, readonly frontSkills: ReadonlyArray<string | null> | null, readonly backSkills: ReadonlyArray<string | null> | null, readonly githubPath: string | null, readonly deployPath: string | null, readonly order: number | null, readonly pic: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData | null } | null }> } };
 
+type SeoDataQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type SeoDataQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null } | null } | null };
+
 type SkillsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
