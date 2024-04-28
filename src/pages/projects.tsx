@@ -34,6 +34,10 @@ const Rabbit = styled(motion.div)`
 `;
 
 const Tree = styled(motion.div)`
+  width: 17%;
+  position: absolute;
+  top: 0;
+  right: 1%;
   opacity: 0;
 `;
 
@@ -106,6 +110,8 @@ function Projects() {
   const treeVariants = {
     show: {
       opacity: 1,
+      y: moveRange / 1.4,
+      transition: { opacity: { delay: 1 } },
     },
   };
 
@@ -132,7 +138,6 @@ function Projects() {
           image={getImage(rest.childImageSharp)!}
           alt="rest"
           className="pic-rest"
-          style={{ top: moveRange / 1.4 }}
         />
       </Tree>
     </Wrapper>

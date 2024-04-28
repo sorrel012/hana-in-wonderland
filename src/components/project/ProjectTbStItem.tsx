@@ -68,7 +68,6 @@ function ProjectTbStItem({ projectName }: IProjectProps) {
         (tbShooting: IProjectTbShooting) => tbShooting.name === projectName,
       );
       newTbShooting.sort((a, b) => a.order - b.order);
-      console.log(newTbShooting);
       setTbShootings(newTbShooting);
     }
   }, [data]);
