@@ -1,49 +1,53 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby Minimal TypeScript Starter
-</h1>
+# 🦋 HwH in Wonderland🌺
+### 동화 테마의 포트폴리오 사이트 <br><br>
+![main](https://github.com/sorrel012/my-portfolio/assets/115568532/8321826d-df15-40c1-9f3c-0ec69825e883)
 
-## 🚀 Quick start
+<br>
 
-1.  **Create a Gatsby site.**
+## 📆 개발 기간
+- 2024.03.15 - 2024.04.14
+- 2024.04.24 - 2024.04.28(Gatsby)
 
-    Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
+<br>
 
-    ```shell
-    # create a new Gatsby site using the minimal TypeScript starter
-    npm init gatsby -- -ts
-    ```
+## 🖥 개발 환경
+### ✔ 사용 언어
+- JAVA(JDK 17), HTML, CSS, JavaScript, TypeScript
+### ✔ 사용 기술
+- Gatsby, React, GraphQL, SCSS, Node(v20.10.0), SpringBoot(Gradle), AWS
+### ✔ 사용 라이브러리
+- axios, react-router, redux, react-query(tanstack-query), framer-motion sweetalert2, styled-components
+### ✔ TOOL
+- Webstorm, IntelliJ, DBeaver, ERDCloud, Figma
+### ✔ OS
+- Window10
 
-2.  **Start developing.**
+<br>
+  
+## 🖥 주요 기능
+- Profile<br /><br />
+  <img src='https://github.com/sorrel012/my-portfolio/assets/115568532/d486c05b-2e36-4176-b1e5-2e552ccaf820' style='width: 600px; height: 350px'/>  
+  - Theme: 인어공주 
+  - 자기소개, 사진, 이름, 생년월일, 주소, 이메일, 학력, 경력과 같은 개인 프로필을 조회활 수 있다.<br /><br />
 
-    Navigate into your new site’s directory and start it up.
+- Skills<br /><br />
+  <img src='https://github.com/sorrel012/my-portfolio/assets/115568532/6d29f7a7-5cf8-46af-9526-fd743b246ef9' style='width: 600px; height: 350px'/>  
+  <img src='https://github.com/sorrel012/my-portfolio/assets/115568532/f7ba35a1-fd40-428e-9d88-dcd0bcb1ab0e' style='width: 600px; height: 350px'/>  
+  - Theme: 아낌없이 주는 나무
+  - Client, Server, Tool 스택을 확인할 수 있다.
+  - 각 과일 클릭 시 기술 스택 layer가 오픈된다. <br /><br />
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+- Projects<br /><br />
+  <img src='https://github.com/sorrel012/my-portfolio/assets/115568532/6f6ffcc2-2214-4bc8-bfe8-9e820a82c3e4' style='width: 600px; height: 1000px'/>
+  - Theme: 토끼와 거북이
+  - 사이드 프로젝트의 개발 기간 및 인원, 개발 환경, 주요 기능, 문제 해결에 관한 정보를 조회할 수 있다.<br /><br />
 
-3.  **Open the code and start customizing!**
-
-    Your site is now running at http://localhost:8000!
-
-    Edit `src/pages/profile.tsx` to see your site update in real-time!
-
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-## 🚀 Quick start (Netlify)
-
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
-
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)
+- Contact<br /><br />
+  <img src='https://github.com/sorrel012/my-portfolio/assets/115568532/7dfb5c94-dcb5-41cd-8ad9-7f530d90715c' style='width: 600px; height: 450px'/>
+  - Theme: 피터팬
+  - 포트폴리오 사이트 개발자에게 메시지를 남길 수 있다.<br /><br />  
+  
+- Admin<br /><br />
+  <img src='https://github.com/sorrel012/my-portfolio/assets/115568532/ef7c3923-4f8e-412b-ace8-0ff0be047545' style='width: 600px; height: 550px'/>
+  - 포트폴리오 사이트를 관리할 수 있는 관리자 기능.
+  - 로그인한 관리자만 접근하여 업데이트할 수 있다. <br /><br />
