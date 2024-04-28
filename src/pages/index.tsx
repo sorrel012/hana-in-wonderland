@@ -5,13 +5,6 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 import rabbit from '../assets/images/home/rabbit.png';
-import mushroom from '../assets/images/home/mushroom.png';
-import mushroomHover from '../assets/images/home/mushroom-hover.png';
-import flower1 from '../assets/images/home/flower1.png';
-import flower2 from '../assets/images/home/flower2.png';
-import flower3 from '../assets/images/home/flower3.png';
-import flower4 from '../assets/images/home/flower4.png';
-import flower5 from '../assets/images/home/flower5.png';
 import Seo from '../components/Seo';
 
 const Wrapper = styled.div`
@@ -149,12 +142,6 @@ const mushroomVariants = {
 };
 
 const Home = () => {
-  const [mushroomImg, setMushroomImg] = useState<IMushroomState>({
-    [CategoryText.PROFILE]: mushroom,
-    [CategoryText.SKILLS]: mushroom,
-    [CategoryText.PROJECT]: mushroom,
-    [CategoryText.CONTACT]: mushroom,
-  });
   const [innerWidth, setInnerWidth] = useState(0);
 
   useEffect(() => {
@@ -172,7 +159,18 @@ const Home = () => {
     },
   };
 
-  const { grass, butterfly1, butterfly2 } = useStaticQuery(graphql`
+  const {
+    grass,
+    butterfly1,
+    butterfly2,
+    mushroom,
+    mushroomHover,
+    flower1,
+    flower2,
+    flower3,
+    flower4,
+    flower5,
+  } = useStaticQuery(graphql`
     query HomeImage {
       grass: file(relativePath: { eq: "home/grass.png" }) {
         childImageSharp {
@@ -195,8 +193,64 @@ const Home = () => {
           }
         }
       }
+      mushroom: file(relativePath: { eq: "home/mushroom.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      mushroomHover: file(relativePath: { eq: "home/mushroom-hover.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      flower1: file(relativePath: { eq: "home/flower1.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      flower2: file(relativePath: { eq: "home/flower2.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      flower3: file(relativePath: { eq: "home/flower3.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      flower4: file(relativePath: { eq: "home/flower4.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      flower5: file(relativePath: { eq: "home/flower5.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
   `);
+
+  const [mushroomImg, setMushroomImg] = useState<IMushroomState>({
+    [CategoryText.PROFILE]: mushroom.childImageSharp.fluid.src,
+    [CategoryText.SKILLS]: mushroom.childImageSharp.fluid.src,
+    [CategoryText.PROJECT]: mushroom.childImageSharp.fluid.src,
+    [CategoryText.CONTACT]: mushroom.childImageSharp.fluid.src,
+  });
 
   const onLoginClick = () => {
     const isLogin = sessionStorage.getItem('isLogin');
@@ -211,14 +265,14 @@ const Home = () => {
     setMushroomImg((prev) => {
       return {
         ...prev,
-        [category]: mushroomHover,
+        [category]: mushroomHover.childImageSharp.fluid.src,
       };
     });
   const onMushroomInitial = (category: string) =>
     setMushroomImg((prev) => {
       return {
         ...prev,
-        [category]: mushroom,
+        [category]: mushroom.childImageSharp.fluid.src,
       };
     });
 
@@ -316,13 +370,22 @@ const Home = () => {
         <Grass src={grass.childImageSharp.fluid.src} />
         <Flowers>
           <FlowerFirstRow>
-            <Flower src={flower1} transform="matrix(-1, 0, 0, 1, 0, 0)" />
-            <Flower src={flower3} transform="matrix(-1, 0, 0, 1, 0, 0)" />
-            <Flower src={flower5} transform="matrix(-1, 0, 0, 1, 0, 0)" />
+            <Flower
+              src={flower1.childImageSharp.fluid.src}
+              transform="matrix(-1, 0, 0, 1, 0, 0)"
+            />
+            <Flower
+              src={flower3.childImageSharp.fluid.src}
+              transform="matrix(-1, 0, 0, 1, 0, 0)"
+            />
+            <Flower
+              src={flower5.childImageSharp.fluid.src}
+              transform="matrix(-1, 0, 0, 1, 0, 0)"
+            />
           </FlowerFirstRow>
           <FlowerSecondRow>
-            <Flower src={flower2} transform="" />
-            <Flower src={flower4} transform="" />
+            <Flower src={flower2.childImageSharp.fluid.src} transform="" />
+            <Flower src={flower4.childImageSharp.fluid.src} transform="" />
           </FlowerSecondRow>
         </Flowers>
       </BackgroundWrapper>
