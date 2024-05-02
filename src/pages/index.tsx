@@ -57,7 +57,7 @@ const PageLabel = styled.h2`
   position: absolute;
   bottom: 17%;
   font-size: 2.1vw;
-  font-family: 'LeeSeoyun', sans-serif;
+  font-family: 'LeeSeoyun', 'Short Stack', sans-serif;
   cursor: pointer;
   color: ${(props) => props.theme.home.textColor};
 `;
