@@ -37,6 +37,13 @@ const config: GatsbyConfig = {
         icon: './src/assets/images/favicon.png',
       },
     },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`IBM Plex Sans KR`],
+        display: 'swap',
+      },
+    },
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',

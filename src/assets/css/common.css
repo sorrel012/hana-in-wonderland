@@ -76,7 +76,7 @@ table {
 }
 
 body {
-  font-family: "SUITE-Regular", sans-serif;
+  font-family: "SUITE-Regular", "IBM Plex Sans KR", sans-serif;
   line-height: 1.2;
   width: 100vw;
   height: 100vh;
@@ -99,7 +99,7 @@ a {
 }
 
 .font-default {
-  font-family: "SUITE-Regular", sans-serif;
+  font-family: "SUITE-Regular", "IBM Plex Sans KR", sans-serif;
 }
 .font-fairy-tail {
   font-family: "Fairytale_ddobak", sans-serif;
