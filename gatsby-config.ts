@@ -40,7 +40,7 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`IBM Plex Sans KR`],
+        fonts: [`Nanum Gothic`],
         display: 'swap',
       },
     },
