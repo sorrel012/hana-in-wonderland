@@ -44,13 +44,13 @@ function CareerProjectItem({ companyName }: IProjectItemProps) {
   useEffect(() => {
     let newWorks: any[] = [];
     allContentfulCareerProject.edges.forEach((work: any) => {
-      const { company, project } = work.node;
+      const { company, project, order } = work.node;
       if (company === companyName) {
-        newWorks.push({ project: project.raw, order: project.order });
+        newWorks.push({ project: project.raw, order });
       }
     });
-    newWorks.sort((a, b) => b.order - a.order);
     setProjects(newWorks);
+    newWorks.sort((a, b) => a.order - b.order);
   }, [allContentfulCareerProject]);
 
   return (
