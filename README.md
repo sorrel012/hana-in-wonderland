@@ -28,7 +28,7 @@
 - Profile<br /><br />
   <img src='https://github.com/sorrel012/my-portfolio/assets/115568532/d486c05b-2e36-4176-b1e5-2e552ccaf820' style='width: 600px; height: 350px'/>  
   - Theme: 인어공주 
-  - 자기소개, 사진, 이름, 생년월일, 주소, 이메일, 학력, 경력과 같은 개인 프로필을 조회활 수 있다.<br /><br />
+  - 자기소개, 사진, 이름, 생년월일, 주소, 이메일, 학력, 경력과 같은 개인 프로필을 조회할 수 있다.<br /><br />
 
 - Skills<br /><br />
   <img src='https://github.com/sorrel012/my-portfolio/assets/115568532/6d29f7a7-5cf8-46af-9526-fd743b246ef9' style='width: 600px; height: 350px'/>  
@@ -49,5 +49,5 @@
   
 - Admin<br /><br />
   <img src='https://github.com/sorrel012/my-portfolio/assets/115568532/ef7c3923-4f8e-412b-ace8-0ff0be047545' style='width: 600px; height: 550px'/>
-  - 포트폴리오 사이트를 관리할 수 있는 관리자 기능.
-  - 로그인한 관리자만 접근하여 업데이트할 수 있다. <br /><br />
+  - 사이트 방문자들이 남긴 Contact를 확인할 수 있는 관리자 페이지
+  - 로그인한 관리자만 접근할 수 있다. <br /><br />
