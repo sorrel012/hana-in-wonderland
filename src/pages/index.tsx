@@ -252,14 +252,6 @@ const Home = () => {
     [CategoryText.CONTACT]: mushroom.childImageSharp.fluid.src,
   });
 
-  const onLoginClick = () => {
-    const isLogin = sessionStorage.getItem('isLogin');
-    if (isLogin === 'Y') {
-      navigate('/admin');
-    } else {
-      navigate('/login');
-    }
-  };
 
   const onMushroomHover = (category: string) =>
     setMushroomImg((prev) => {
@@ -283,7 +275,7 @@ const Home = () => {
   return (
     <Wrapper className="align-center">
       <div className="align-right">
-        <Login src={rabbit} alt="rabbit" onClick={onLoginClick} />
+        <Login src={rabbit} alt="rabbit"  />
       </div>
       <Butterfly
         src={butterfly2.childImageSharp.fluid.src}

@@ -47,7 +47,3 @@
   - Theme: 피터팬
   - 포트폴리오 사이트 개발자에게 메시지를 남길 수 있다.<br /><br />  
   
-- Admin<br /><br />
-  <img src='https://github.com/sorrel012/my-portfolio/assets/115568532/ef7c3923-4f8e-412b-ace8-0ff0be047545' style='width: 600px; height: 550px'/>
-  - 사이트 방문자들이 남긴 Contact를 확인할 수 있는 관리자 페이지
-  - 로그인한 관리자만 접근할 수 있다. <br /><br />
