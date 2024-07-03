@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IContactProps } from '../pages/contact';
+import emailjs from '@emailjs/browser';
 
 const apiUrl = process.env.GATSBY_API_URL;
 
@@ -19,7 +19,27 @@ export async function getContact() {
   return data.result;
 }
 
-export async function saveContact(contact: IContactProps) {
-  const { data } = await axios.post(`${apiUrl}/contact`, contact);
-  return data;
+export async function saveContact(form) {
+  let status = '';
+
+  await emailjs
+    .sendForm(
+      process.env.GATSBY_EMAIL_SERVICE_ID,
+      process.env.GATSBY_EMAIL_TEMPLATE_ID,
+      form,
+      {
+        publicKey: process.env.GATSBY_EMAIL_PUBLIC_KEY,
+      },
+    )
+    .then(
+      () => {
+        status = 'success';
+      },
+      (error) => {
+        console.log('error: ', error);
+        status = 'error';
+      },
+    );
+
+  return status;
 }

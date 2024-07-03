@@ -1,12 +1,10 @@
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useRef, useState } from 'react';
 import styled from 'styled-components';
 import star from '../assets/images/contact/star.png';
 import { motion } from 'framer-motion';
 import Header from '../components/Header';
 import Swal from 'sweetalert2';
-import { useMutation } from '@tanstack/react-query';
 import { saveContact } from '../util/api';
-import { queryClient } from '../../gatsby-browser';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import Seo from '../components/Seo';
@@ -190,6 +188,7 @@ function Contact() {
   const [contactEmail, setContactEmail] = useState('');
   const [contactTitle, setContactTitle] = useState('');
   const [contactContent, setContactContent] = useState('');
+  const form = useRef<HTMLFormElement | null>(null);
 
   const { wing1, wing2 } = useStaticQuery(graphql`
     query Wings {
@@ -206,28 +205,7 @@ function Contact() {
     }
   `);
 
-  const { mutate } = useMutation({
-    mutationFn: saveContact,
-    onSuccess: () => {
-      Swal.fire({
-        title: '✅',
-        text: '저장에 성공했습니다.',
-      });
-      setContactName('');
-      setContactEmail('');
-      setContactTitle('');
-      setContactContent('');
-      queryClient.invalidateQueries({ queryKey: ['contact'] });
-    },
-    onError: () => {
-      Swal.fire({
-        title: '❗',
-        text: '저장에 실패했습니다.',
-      });
-    },
-  });
-
-  const onContactClick = (e: FormEvent) => {
+  const sendEmail = async (e: FormEvent) => {
     e.preventDefault();
 
     const contactParams: IContactProps = {
@@ -269,7 +247,22 @@ function Contact() {
       return;
     }
 
-    mutate(contactParams);
+    const result = await saveContact(form.current);
+    if (result === 'success') {
+      Swal.fire({
+        title: '✅',
+        text: '메일 전송에 성공했습니다.',
+      });
+      setContactName('');
+      setContactEmail('');
+      setContactTitle('');
+      setContactContent('');
+    } else {
+      Swal.fire({
+        title: '❗',
+        text: '메일 전송에 실패했습니다.',
+      });
+    }
   };
 
   return (
@@ -282,7 +275,7 @@ function Contact() {
           alt="wing"
           className="pic-wing"
         />
-        <Box>
+        <Box ref={form} onSubmit={sendEmail}>
           <Row>
             <Name>
               <Label>
@@ -292,6 +285,7 @@ function Contact() {
               <Input
                 required
                 value={contactName}
+                name="contactName"
                 onChange={(e) => setContactName(e.target.value)}
               />
             </Name>
@@ -302,6 +296,7 @@ function Contact() {
               </Label>
               <Input
                 value={contactEmail}
+                name="contactEmail"
                 required
                 type="email"
                 onChange={(e) => setContactEmail(e.target.value)}
@@ -315,6 +310,7 @@ function Contact() {
             </Label>
             <Input
               value={contactTitle}
+              name="contactTitle"
               required
               onChange={(e) => setContactTitle(e.target.value)}
             />
@@ -326,13 +322,14 @@ function Contact() {
             </Label>
             <TextArea
               value={contactContent}
+              name="contactContent"
               className="h-30"
               required
               onChange={(e) => setContactContent(e.target.value)}
             />
           </Content>
           <div className="align-right">
-            <Button onClick={onContactClick}>남기기</Button>
+            <Button>남기기</Button>
           </div>
         </Box>
         <GatsbyImage
