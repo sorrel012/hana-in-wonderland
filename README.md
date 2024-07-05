@@ -12,13 +12,13 @@
 
 ## 🖥 개발 환경
 ### ✔ 사용 언어
-- JAVA(JDK 17), HTML, CSS, JavaScript, TypeScript
+- HTML, CSS, JavaScript, TypeScript
 ### ✔ 사용 기술
-- Gatsby, React, GraphQL, SCSS, Node(v20.10.0), SpringBoot(Gradle), AWS
+- Gatsby, React, GraphQL, SCSS, Node(v20.10.0)
 ### ✔ 사용 라이브러리
-- axios, react-router, redux, react-query(tanstack-query), framer-motion sweetalert2, styled-components
+- axios, react-router, redux, react-query(tanstack-query), framer-motion, sweetalert2, styled-components
 ### ✔ TOOL
-- Webstorm, IntelliJ, DBeaver, ERDCloud, Figma
+- Webstorm, Figma
 ### ✔ OS
 - Window10
 
